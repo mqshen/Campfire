@@ -7,11 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F136C1C11999B13D001F6A26 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C1C01999B13D001F6A26 /* ChatViewController.swift */; };
+		F136C1C31999B302001F6A26 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C1C21999B302001F6A26 /* ContactsViewController.swift */; };
+		F136C1C5199A1B9B001F6A26 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C1C4199A1B9B001F6A26 /* Websocket.swift */; };
+		F16B39731994A7C0009E9AF0 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B39721994A7C0009E9AF0 /* util.swift */; };
+		F16B39761994B78F009E9AF0 /* HttpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B39751994B78F009E9AF0 /* HttpConnection.swift */; };
 		F17F876419949D9900CB43CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F876319949D9900CB43CC /* AppDelegate.swift */; };
 		F17F876619949D9900CB43CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F876519949D9900CB43CC /* ViewController.swift */; };
 		F17F876919949D9900CB43CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17F876719949D9900CB43CC /* Main.storyboard */; };
 		F17F876B19949D9900CB43CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17F876A19949D9900CB43CC /* Images.xcassets */; };
 		F17F877719949D9900CB43CC /* CampfireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F877619949D9900CB43CC /* CampfireTests.swift */; };
+		F18A7545199B160B002FE6FB /* SocketIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A7544199B160B002FE6FB /* SocketIO.swift */; };
+		F19AE2CC199857CE00C72FD5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AE2CB199857CE00C72FD5 /* Session.swift */; };
+		F19AE2CE199892B500C72FD5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AE2CD199892B500C72FD5 /* MainViewController.swift */; };
+		F19AE2D71998A40100C72FD5 /* tabbar_contacts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AE2D11998A40100C72FD5 /* tabbar_contacts@2x.png */; };
+		F19AE2D81998A40100C72FD5 /* tabbar_contactsHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AE2D21998A40100C72FD5 /* tabbar_contactsHL@2x.png */; };
+		F19AE2D91998A40100C72FD5 /* tabbar_mainframe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AE2D31998A40100C72FD5 /* tabbar_mainframe@2x.png */; };
+		F19AE2DA1998A40100C72FD5 /* tabbar_mainframeHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AE2D41998A40100C72FD5 /* tabbar_mainframeHL@2x.png */; };
+		F19AE2DB1998A40100C72FD5 /* tabbar_me@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AE2D51998A40100C72FD5 /* tabbar_me@2x.png */; };
+		F19AE2DC1998A40100C72FD5 /* tabbar_meHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AE2D61998A40100C72FD5 /* tabbar_meHL@2x.png */; };
+		F19AE2DE1998A4EA00C72FD5 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AE2DD1998A4EA00C72FD5 /* ImageButton.swift */; };
+		F19AE2E01998BEC600C72FD5 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AE2DF1998BEC600C72FD5 /* TabView.swift */; };
+		F1A210AF199A515800B4663F /* HttpFileUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A210AE199A515800B4663F /* HttpFileUpload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F136C1C01999B13D001F6A26 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F136C1C21999B302001F6A26 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		F136C1C4199A1B9B001F6A26 /* Websocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
+		F16B39721994A7C0009E9AF0 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
+		F16B39751994B78F009E9AF0 /* HttpConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpConnection.swift; sourceTree = "<group>"; };
 		F17F875E19949D9900CB43CC /* Campfire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Campfire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17F876219949D9900CB43CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F17F876319949D9900CB43CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +56,22 @@
 		F17F877019949D9900CB43CC /* CampfireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CampfireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17F877519949D9900CB43CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F17F877619949D9900CB43CC /* CampfireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampfireTests.swift; sourceTree = "<group>"; };
+		F18A7544199B160B002FE6FB /* SocketIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIO.swift; sourceTree = "<group>"; };
+		F19AE2CB199857CE00C72FD5 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		F19AE2CD199892B500C72FD5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F19AE2D11998A40100C72FD5 /* tabbar_contacts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_contacts@2x.png"; sourceTree = "<group>"; };
+		F19AE2D21998A40100C72FD5 /* tabbar_contactsHL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_contactsHL@2x.png"; sourceTree = "<group>"; };
+		F19AE2D31998A40100C72FD5 /* tabbar_mainframe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_mainframe@2x.png"; sourceTree = "<group>"; };
+		F19AE2D41998A40100C72FD5 /* tabbar_mainframeHL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_mainframeHL@2x.png"; sourceTree = "<group>"; };
+		F19AE2D51998A40100C72FD5 /* tabbar_me@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_me@2x.png"; sourceTree = "<group>"; };
+		F19AE2D61998A40100C72FD5 /* tabbar_meHL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_meHL@2x.png"; sourceTree = "<group>"; };
+		F19AE2DD1998A4EA00C72FD5 /* ImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
+		F19AE2DF1998BEC600C72FD5 /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		F19CBA26199A649D00EA2737 /* Campfire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Campfire-Bridging-Header.h"; sourceTree = "<group>"; };
+		F1A210AE199A515800B4663F /* HttpFileUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpFileUpload.swift; sourceTree = "<group>"; };
+		F1D55F8B199A5C2A007F8136 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F1D55F8E199A5D0B007F8136 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
+		F1D55F90199A5E34007F8136 /* libcorecrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcorecrypto.dylib; path = usr/lib/system/libcorecrypto.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +92,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F136C1BD1999B0F5001F6A26 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				F136C1C01999B13D001F6A26 /* ChatViewController.swift */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		F136C1BE1999B0F5001F6A26 /* contact */ = {
+			isa = PBXGroup;
+			children = (
+				F136C1C21999B302001F6A26 /* ContactsViewController.swift */,
+			);
+			path = contact;
+			sourceTree = "<group>";
+		};
+		F136C1BF1999B0F5001F6A26 /* me */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = me;
+			sourceTree = "<group>";
+		};
+		F16B39741994B779009E9AF0 /* communication */ = {
+			isa = PBXGroup;
+			children = (
+				F16B39751994B78F009E9AF0 /* HttpConnection.swift */,
+				F136C1C4199A1B9B001F6A26 /* Websocket.swift */,
+				F1A210AE199A515800B4663F /* HttpFileUpload.swift */,
+				F18A7544199B160B002FE6FB /* SocketIO.swift */,
+			);
+			path = communication;
+			sourceTree = "<group>";
+		};
 		F17F875519949D9900CB43CC = {
 			isa = PBXGroup;
 			children = (
 				F17F876019949D9900CB43CC /* Campfire */,
 				F17F877319949D9900CB43CC /* CampfireTests */,
 				F17F875F19949D9900CB43CC /* Products */,
+				F1D55F8D199A5CEB007F8136 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,11 +148,21 @@
 		F17F876019949D9900CB43CC /* Campfire */ = {
 			isa = PBXGroup;
 			children = (
+				F136C1BD1999B0F5001F6A26 /* chat */,
+				F136C1BE1999B0F5001F6A26 /* contact */,
+				F136C1BF1999B0F5001F6A26 /* me */,
+				F19AE2D01998A40100C72FD5 /* resources */,
+				F19AE2CF19989DDB00C72FD5 /* widget */,
+				F16B39741994B779009E9AF0 /* communication */,
 				F17F876319949D9900CB43CC /* AppDelegate.swift */,
 				F17F876519949D9900CB43CC /* ViewController.swift */,
 				F17F876719949D9900CB43CC /* Main.storyboard */,
 				F17F876A19949D9900CB43CC /* Images.xcassets */,
 				F17F876119949D9900CB43CC /* Supporting Files */,
+				F16B39721994A7C0009E9AF0 /* util.swift */,
+				F19AE2CB199857CE00C72FD5 /* Session.swift */,
+				F19AE2CD199892B500C72FD5 /* MainViewController.swift */,
+				F19CBA26199A649D00EA2737 /* Campfire-Bridging-Header.h */,
 			);
 			path = Campfire;
 			sourceTree = "<group>";
@@ -107,6 +190,38 @@
 				F17F877519949D9900CB43CC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F19AE2CF19989DDB00C72FD5 /* widget */ = {
+			isa = PBXGroup;
+			children = (
+				F19AE2DD1998A4EA00C72FD5 /* ImageButton.swift */,
+				F19AE2DF1998BEC600C72FD5 /* TabView.swift */,
+			);
+			path = widget;
+			sourceTree = "<group>";
+		};
+		F19AE2D01998A40100C72FD5 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				F19AE2D11998A40100C72FD5 /* tabbar_contacts@2x.png */,
+				F19AE2D21998A40100C72FD5 /* tabbar_contactsHL@2x.png */,
+				F19AE2D31998A40100C72FD5 /* tabbar_mainframe@2x.png */,
+				F19AE2D41998A40100C72FD5 /* tabbar_mainframeHL@2x.png */,
+				F19AE2D51998A40100C72FD5 /* tabbar_me@2x.png */,
+				F19AE2D61998A40100C72FD5 /* tabbar_meHL@2x.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		F1D55F8D199A5CEB007F8136 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1D55F90199A5E34007F8136 /* libcorecrypto.dylib */,
+				F1D55F8E199A5D0B007F8136 /* libcommonCrypto.dylib */,
+				F1D55F8B199A5C2A007F8136 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,8 +304,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19AE2DC1998A40100C72FD5 /* tabbar_meHL@2x.png in Resources */,
 				F17F876919949D9900CB43CC /* Main.storyboard in Resources */,
+				F19AE2D91998A40100C72FD5 /* tabbar_mainframe@2x.png in Resources */,
 				F17F876B19949D9900CB43CC /* Images.xcassets in Resources */,
+				F19AE2D71998A40100C72FD5 /* tabbar_contacts@2x.png in Resources */,
+				F19AE2D81998A40100C72FD5 /* tabbar_contactsHL@2x.png in Resources */,
+				F19AE2DA1998A40100C72FD5 /* tabbar_mainframeHL@2x.png in Resources */,
+				F19AE2DB1998A40100C72FD5 /* tabbar_me@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +329,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A210AF199A515800B4663F /* HttpFileUpload.swift in Sources */,
+				F19AE2CC199857CE00C72FD5 /* Session.swift in Sources */,
+				F16B39731994A7C0009E9AF0 /* util.swift in Sources */,
 				F17F876619949D9900CB43CC /* ViewController.swift in Sources */,
+				F136C1C5199A1B9B001F6A26 /* Websocket.swift in Sources */,
+				F19AE2E01998BEC600C72FD5 /* TabView.swift in Sources */,
+				F19AE2CE199892B500C72FD5 /* MainViewController.swift in Sources */,
+				F19AE2DE1998A4EA00C72FD5 /* ImageButton.swift in Sources */,
+				F18A7545199B160B002FE6FB /* SocketIO.swift in Sources */,
 				F17F876419949D9900CB43CC /* AppDelegate.swift in Sources */,
+				F136C1C11999B13D001F6A26 /* ChatViewController.swift in Sources */,
+				F16B39761994B78F009E9AF0 /* HttpConnection.swift in Sources */,
+				F136C1C31999B302001F6A26 /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,9 +457,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Campfire/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Campfire/Campfire-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -336,9 +477,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Campfire/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Campfire/Campfire-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
 		};
@@ -395,6 +545,7 @@
 				F17F877C19949D9900CB43CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F17F877D19949D9900CB43CC /* Build configuration list for PBXNativeTarget "CampfireTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +554,7 @@
 				F17F877F19949D9900CB43CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+
+class Session {
+    class var sharedInstance: Session {
+    struct Singleton {
+        static let instance = Session()
+        }
+        return Singleton.instance
+    }
+    
+    var userName: String?
+    var nickName: String?
+    var sessionId: String?
+    
+}

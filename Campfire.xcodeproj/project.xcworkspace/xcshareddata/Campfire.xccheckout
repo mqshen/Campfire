@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C5C1DE96-46B4-48CA-A5CA-14CCAA2E003D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Campfire</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CC6CFAC7DC1E5D8807201AA8CC2B4031282FDC3A</key>
+		<string>https://github.com/mqshen/Campfire.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Campfire.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CC6CFAC7DC1E5D8807201AA8CC2B4031282FDC3A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mqshen/Campfire.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CC6CFAC7DC1E5D8807201AA8CC2B4031282FDC3A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CC6CFAC7DC1E5D8807201AA8CC2B4031282FDC3A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Campfire</string>
+		</dict>
+	</array>
+</dict>
+</plist>

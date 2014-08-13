@@ -7,3 +7,17 @@
 //
 
 import Foundation
+import UIKit
+
+
+class ChatViewController: UITableViewController
+{
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    func receiveMessage(message: NSDictionary) {
+        
+    }
+}
