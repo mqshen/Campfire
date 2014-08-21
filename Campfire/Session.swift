@@ -11,8 +11,8 @@ import Foundation
 
 class Session {
     class var sharedInstance: Session {
-    struct Singleton {
-        static let instance = Session()
+        struct Singleton {
+            static let instance = Session()
         }
         return Singleton.instance
     }
@@ -20,5 +20,6 @@ class Session {
     var userName: String?
     var nickName: String?
     var sessionId: String?
+    var socketIO: SocketIO?
     
 }

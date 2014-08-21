@@ -49,6 +49,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         userNameField.text = "mqshen"
         passwordField.text = "111111"
+        
+        
     }
 
     func doLogin(sender:UIButton!){

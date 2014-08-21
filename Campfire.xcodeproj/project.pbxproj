@@ -10,6 +10,20 @@
 		F136C1C11999B13D001F6A26 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C1C01999B13D001F6A26 /* ChatViewController.swift */; };
 		F136C1C31999B302001F6A26 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C1C21999B302001F6A26 /* ContactsViewController.swift */; };
 		F136C1C5199A1B9B001F6A26 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C1C4199A1B9B001F6A26 /* Websocket.swift */; };
+		F1505B8A19A580FA001412E6 /* MessageKeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1505B8919A580FA001412E6 /* MessageKeyboardController.swift */; };
+		F1505B8C19A59AAF001412E6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1505B8B19A59AAF001412E6 /* Message.swift */; };
+		F159C83219A4771300058487 /* SWWebImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82C19A4771300058487 /* SWWebImageDownloader.swift */; };
+		F159C83319A4771300058487 /* SWWebImageDownloaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82D19A4771300058487 /* SWWebImageDownloaderOperation.swift */; };
+		F159C83419A4771300058487 /* SWWebImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82E19A4771300058487 /* SWWebImageManager.swift */; };
+		F159C83519A4771300058487 /* SWWebImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82F19A4771300058487 /* SWWebImageUtil.swift */; };
+		F159C83619A4771300058487 /* SWWebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83019A4771300058487 /* SWWebImageView.swift */; };
+		F159C83719A4771300058487 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83119A4771300058487 /* util.swift */; };
+		F159C83919A47F3000058487 /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83819A47F3000058487 /* ContactViewCell.swift */; };
+		F159C83B19A49C1000058487 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83A19A49C1000058487 /* MessageViewController.swift */; };
+		F159C83D19A49C7400058487 /* MessgeCollectionView .swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83C19A49C7400058487 /* MessgeCollectionView .swift */; };
+		F159C83F19A4A1F400058487 /* IncomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83E19A4A1F400058487 /* IncomingMessageCell.swift */; };
+		F159C84119A4A3A400058487 /* MessagesInputToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C84019A4A3A400058487 /* MessagesInputToolbar.swift */; };
+		F159C84319A4A3EA00058487 /* MessagesComposerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C84219A4A3EA00058487 /* MessagesComposerTextView.swift */; };
 		F16B39731994A7C0009E9AF0 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B39721994A7C0009E9AF0 /* util.swift */; };
 		F16B39761994B78F009E9AF0 /* HttpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B39751994B78F009E9AF0 /* HttpConnection.swift */; };
 		F17F876419949D9900CB43CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F876319949D9900CB43CC /* AppDelegate.swift */; };
@@ -45,6 +59,20 @@
 		F136C1C01999B13D001F6A26 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F136C1C21999B302001F6A26 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		F136C1C4199A1B9B001F6A26 /* Websocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
+		F1505B8919A580FA001412E6 /* MessageKeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageKeyboardController.swift; sourceTree = "<group>"; };
+		F1505B8B19A59AAF001412E6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F159C82C19A4771300058487 /* SWWebImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageDownloader.swift; sourceTree = "<group>"; };
+		F159C82D19A4771300058487 /* SWWebImageDownloaderOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageDownloaderOperation.swift; sourceTree = "<group>"; };
+		F159C82E19A4771300058487 /* SWWebImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageManager.swift; sourceTree = "<group>"; };
+		F159C82F19A4771300058487 /* SWWebImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageUtil.swift; sourceTree = "<group>"; };
+		F159C83019A4771300058487 /* SWWebImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageView.swift; sourceTree = "<group>"; };
+		F159C83119A4771300058487 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
+		F159C83819A47F3000058487 /* ContactViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
+		F159C83A19A49C1000058487 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		F159C83C19A49C7400058487 /* MessgeCollectionView .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessgeCollectionView .swift"; sourceTree = "<group>"; };
+		F159C83E19A4A1F400058487 /* IncomingMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingMessageCell.swift; sourceTree = "<group>"; };
+		F159C84019A4A3A400058487 /* MessagesInputToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesInputToolbar.swift; sourceTree = "<group>"; };
+		F159C84219A4A3EA00058487 /* MessagesComposerTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesComposerTextView.swift; sourceTree = "<group>"; };
 		F16B39721994A7C0009E9AF0 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		F16B39751994B78F009E9AF0 /* HttpConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpConnection.swift; sourceTree = "<group>"; };
 		F17F875E19949D9900CB43CC /* Campfire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Campfire.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +124,13 @@
 			isa = PBXGroup;
 			children = (
 				F136C1C01999B13D001F6A26 /* ChatViewController.swift */,
+				F159C83A19A49C1000058487 /* MessageViewController.swift */,
+				F159C83C19A49C7400058487 /* MessgeCollectionView .swift */,
+				F159C83E19A4A1F400058487 /* IncomingMessageCell.swift */,
+				F159C84019A4A3A400058487 /* MessagesInputToolbar.swift */,
+				F159C84219A4A3EA00058487 /* MessagesComposerTextView.swift */,
+				F1505B8919A580FA001412E6 /* MessageKeyboardController.swift */,
+				F1505B8B19A59AAF001412E6 /* Message.swift */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -104,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				F136C1C21999B302001F6A26 /* ContactsViewController.swift */,
+				F159C83819A47F3000058487 /* ContactViewCell.swift */,
 			);
 			path = contact;
 			sourceTree = "<group>";
@@ -113,6 +149,19 @@
 			children = (
 			);
 			path = me;
+			sourceTree = "<group>";
+		};
+		F159C82B19A4771300058487 /* SWWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				F159C82C19A4771300058487 /* SWWebImageDownloader.swift */,
+				F159C82D19A4771300058487 /* SWWebImageDownloaderOperation.swift */,
+				F159C82E19A4771300058487 /* SWWebImageManager.swift */,
+				F159C82F19A4771300058487 /* SWWebImageUtil.swift */,
+				F159C83019A4771300058487 /* SWWebImageView.swift */,
+				F159C83119A4771300058487 /* util.swift */,
+			);
+			path = SWWebImage;
 			sourceTree = "<group>";
 		};
 		F16B39741994B779009E9AF0 /* communication */ = {
@@ -148,6 +197,7 @@
 		F17F876019949D9900CB43CC /* Campfire */ = {
 			isa = PBXGroup;
 			children = (
+				F159C82B19A4771300058487 /* SWWebImage */,
 				F136C1BD1999B0F5001F6A26 /* chat */,
 				F136C1BE1999B0F5001F6A26 /* contact */,
 				F136C1BF1999B0F5001F6A26 /* me */,
@@ -329,19 +379,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F159C84119A4A3A400058487 /* MessagesInputToolbar.swift in Sources */,
 				F1A210AF199A515800B4663F /* HttpFileUpload.swift in Sources */,
+				F159C83F19A4A1F400058487 /* IncomingMessageCell.swift in Sources */,
 				F19AE2CC199857CE00C72FD5 /* Session.swift in Sources */,
 				F16B39731994A7C0009E9AF0 /* util.swift in Sources */,
+				F159C83619A4771300058487 /* SWWebImageView.swift in Sources */,
 				F17F876619949D9900CB43CC /* ViewController.swift in Sources */,
 				F136C1C5199A1B9B001F6A26 /* Websocket.swift in Sources */,
 				F19AE2E01998BEC600C72FD5 /* TabView.swift in Sources */,
 				F19AE2CE199892B500C72FD5 /* MainViewController.swift in Sources */,
+				F159C84319A4A3EA00058487 /* MessagesComposerTextView.swift in Sources */,
 				F19AE2DE1998A4EA00C72FD5 /* ImageButton.swift in Sources */,
+				F159C83419A4771300058487 /* SWWebImageManager.swift in Sources */,
+				F1505B8A19A580FA001412E6 /* MessageKeyboardController.swift in Sources */,
+				F159C83519A4771300058487 /* SWWebImageUtil.swift in Sources */,
 				F18A7545199B160B002FE6FB /* SocketIO.swift in Sources */,
+				F159C83219A4771300058487 /* SWWebImageDownloader.swift in Sources */,
+				F159C83B19A49C1000058487 /* MessageViewController.swift in Sources */,
 				F17F876419949D9900CB43CC /* AppDelegate.swift in Sources */,
 				F136C1C11999B13D001F6A26 /* ChatViewController.swift in Sources */,
+				F159C83719A4771300058487 /* util.swift in Sources */,
+				F1505B8C19A59AAF001412E6 /* Message.swift in Sources */,
+				F159C83D19A49C7400058487 /* MessgeCollectionView .swift in Sources */,
+				F159C83319A4771300058487 /* SWWebImageDownloaderOperation.swift in Sources */,
 				F16B39761994B78F009E9AF0 /* HttpConnection.swift in Sources */,
 				F136C1C31999B302001F6A26 /* ContactsViewController.swift in Sources */,
+				F159C83919A47F3000058487 /* ContactViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,8 +522,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Campfire",
+				);
 				INFOPLIST_FILE = Campfire/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -478,8 +546,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Campfire",
+				);
 				INFOPLIST_FILE = Campfire/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -57,7 +57,7 @@ func digest(original: String, algorithm: HMACAlgorithm, key: String) -> String! 
     let str = original.cStringUsingEncoding(NSUTF8StringEncoding)
     let strLen = UInt(original.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
     let digestLen = algorithm.digestLength()
-    let result = UnsafeMutablePointer<CUnsignedChar>(digestLen)
+    let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
     let keyStr = key.cStringUsingEncoding(NSUTF8StringEncoding)
     let keyLen = UInt(key.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
     
@@ -94,10 +94,15 @@ func uploadHttpFile(url: String,
         for (key, value) in params {
             let keyAndValue = "\(key)=\(value)&"
             dataString.appendString(keyAndValue)
-        
-            result.appendData(key.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false))
-            result.appendData(value.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false))
-            result.appendData("\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false))
+            if let data = key.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)? {
+                result.appendData(data)
+            }
+            if let data = value.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)? {
+                result.appendData(data)
+            }
+            if let data = "\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)? {
+                result.appendData(data)
+            }
         }
     }
     let reqURL = NSURL(string: urlRequestString)
@@ -115,7 +120,7 @@ func uploadHttpFile(url: String,
     NSURLConnection.sendAsynchronousRequest(request,
         queue: NSOperationQueue.mainQueue(),
         completionHandler:{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            if error {
+            if error != nil {
                 print(error)
             }
             else {

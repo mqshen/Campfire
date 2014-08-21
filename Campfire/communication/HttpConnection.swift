@@ -64,7 +64,7 @@ func sendAsyncHttpRequest(url: String,
     NSURLConnection.sendAsynchronousRequest(request,
         queue: operationQueue,
         completionHandler:{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            if error {
+            if (error != nil) {
                 print(error)
             }
             else {

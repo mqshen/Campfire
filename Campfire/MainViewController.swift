@@ -6,20 +6,27 @@
 //  Copyright (c) 2014 GoldRatio. All rights reserved.
 //
 
+
 import Foundation
 import UIKit
+
+let StartChatNotification = "StartChatNotification"
 
 class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelegate, SocketIODelegate{
     
     var containerView: UIView?
     var contentView: UIView?
-    var socketIO: SocketIO?
+    //var socketIO: SocketIO?
     let chatViewController: ChatViewController = ChatViewController()
     let contactsViewController: ContactsViewController = ContactsViewController()
+    var tabBar: TabView?
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.chatViewController.mainViewController = self
         
         //UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
@@ -27,19 +34,21 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
         let frame = self.view.frame
         let height: CGFloat = 50
         
-        let tabBar = TabView(frame: CGRectMake(0, frame.size.height - height, frame.size.width, height),
+        tabBar = TabView(frame: CGRectMake(0, frame.size.height - height, frame.size.width, height),
             nameAndImages:[("聊天" , "tabbar_mainframe@2x.png", "tabbar_mainframeHL@2x.png"),
                 ("通讯录", "tabbar_contacts@2x.png", "tabbar_contactsHL@2x.png"),
                 ("我", "tabbar_me@2x.png", "tabbar_meHL@2x.png")
             ])
-        tabBar.delegate = self
+        tabBar!.delegate = self
         
-        tabBar.backgroundColor = UIColorFromRGB(0x22282D)
-        self.view.addSubview(tabBar)
+        tabBar!.backgroundColor = UIColorFromRGB(0x22282D)
+        self.view.addSubview(tabBar!)
         
-        self.socketIO = SocketIO(url: "socket.io/1/", endpoint: "testendpoint")
-        self.socketIO!.delegate = self
-        self.socketIO!.connect()
+        let session = Session.sharedInstance
+        
+        session.socketIO = SocketIO(url: "socket.io/1/", endpoint: "testendpoint")
+        session.socketIO!.delegate = self
+        session.socketIO!.connect()
         
         self.title = "聊天"
         
@@ -48,12 +57,23 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
         containerView?.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(containerView!)
         
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startChat:", name: StartChatNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    
+    func startChat(note: NSNotification) {
+        if let userInfo = note.userInfo? {
+            if let userName: AnyObject = userInfo["userName"]? {
+                self.tabBar?.setSelect(0)
+                self.chatViewController.startChat(userName as String)
+            }
+        }
+    }
     
     func showChat() -> UIView {
         return chatViewController.view
@@ -89,27 +109,29 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
     
     func socketIODidReceiveMessage(message: String) {
         println(message)
-        let data = message.dataUsingEncoding(NSUTF8StringEncoding)
-        var e: NSError?
-        var responseDic = NSJSONSerialization.JSONObjectWithData( data,
-            options: NSJSONReadingOptions(0),
-            error: &e) as NSDictionary
-        if e != nil {
-            print(e)
-        }
-        else {
-            let name = responseDic["name"] as String
-            if name == "chat" {
-                chatViewController.receiveMessage(responseDic["content"] as NSDictionary)
+        if let data = message.dataUsingEncoding(NSUTF8StringEncoding)? {
+            var e: NSError?
+            var responseDic = NSJSONSerialization.JSONObjectWithData( data,
+                options: NSJSONReadingOptions(0),
+                error: &e) as NSDictionary
+            if e != nil {
+                print(e)
             }
             else {
-                contactsViewController.receiveContacts(responseDic["content"] as NSArray)
+                let name = responseDic["name"] as String
+                if name == "chat" {
+                    chatViewController.receiveMessage(responseDic["content"] as NSDictionary)
+                }
+                else {
+                    contactsViewController.receiveContacts(responseDic["content"] as NSArray)
+                }
             }
         }
     }
     
     func socketIODidConnect() {
-        socketIO!.sendEvent("{\"name\":\"contacts\"}")
+        let session = Session.sharedInstance
+        session.socketIO!.sendEvent("{\"name\":\"contacts\"}")
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

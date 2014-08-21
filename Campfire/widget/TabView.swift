@@ -20,7 +20,7 @@ class TabView: UIView {
     var delegate: TabSelectDelegate?
     let buttons: Array<ImageButton> = []
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -47,6 +47,15 @@ class TabView: UIView {
             }
         }
         
+    }
+    
+    func setSelect(index: Int) {
+        if index < 0 || index >= self.buttons.count {
+            return
+        }
+        let button = self.buttons[index]
+        button.select = true
+        self.doSelect(button)
     }
     
     func doSelect(button: ImageButton) {
