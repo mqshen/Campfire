@@ -15,7 +15,7 @@ class ChatViewController: UITableViewController
     
     var mainViewController: UIViewController?
     
-    var chats = [String]()
+    var chats = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +40,10 @@ class ChatViewController: UITableViewController
             cell = ContactViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "neighborCell")
             //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+        let avatarUrl = self.chats[indexPath.row].avatar
+        cell?.setAvatar(avatarUrl)
         
-        cell?.textLabel.text = self.chats[indexPath.row]
+        cell?.textLabel.text = self.chats[indexPath.row].nickName
         return cell;
     }
     
@@ -49,12 +51,12 @@ class ChatViewController: UITableViewController
         return 55
     }
     
-    func receiveMessage(message: NSDictionary) {
+    func receiveMessage(message: Message) {
         
     }
     
-    func startChat(userName: String) {
-        chats.append(userName)
+    func startChat(user: User) {
+        chats.append(user)
         self.tableView.reloadData()
     }
     
@@ -62,7 +64,7 @@ class ChatViewController: UITableViewController
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let messageViewController = MessageViewController()
         if let mainViewController = self.mainViewController? {
-            messageViewController.toUserName = chats[indexPath.row]
+            messageViewController.toUser = chats[indexPath.row]
             mainViewController.navigationController.pushViewController(messageViewController, animated: true)
         }
     }

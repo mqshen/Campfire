@@ -12,6 +12,12 @@
 		F136C1C5199A1B9B001F6A26 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C1C4199A1B9B001F6A26 /* Websocket.swift */; };
 		F1505B8A19A580FA001412E6 /* MessageKeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1505B8919A580FA001412E6 /* MessageKeyboardController.swift */; };
 		F1505B8C19A59AAF001412E6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1505B8B19A59AAF001412E6 /* Message.swift */; };
+		F153CA5819B705A10039E8F0 /* PersistenceProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153CA5719B705A10039E8F0 /* PersistenceProcessor.swift */; };
+		F1560F0119A6167600101C68 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1560F0019A6167600101C68 /* SwiftyJSON.swift */; };
+		F1560F0319A6250300101C68 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1560F0219A6250300101C68 /* MessageCell.swift */; };
+		F1560F0519A6329E00101C68 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1560F0419A6329E00101C68 /* util.swift */; };
+		F1560F0A19A63F3500101C68 /* bubble_min.png in Resources */ = {isa = PBXBuildFile; fileRef = F1560F0819A63F3500101C68 /* bubble_min.png */; };
+		F1560F0B19A63F3500101C68 /* bubble_min@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1560F0919A63F3500101C68 /* bubble_min@2x.png */; };
 		F159C83219A4771300058487 /* SWWebImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82C19A4771300058487 /* SWWebImageDownloader.swift */; };
 		F159C83319A4771300058487 /* SWWebImageDownloaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82D19A4771300058487 /* SWWebImageDownloaderOperation.swift */; };
 		F159C83419A4771300058487 /* SWWebImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82E19A4771300058487 /* SWWebImageManager.swift */; };
@@ -21,7 +27,6 @@
 		F159C83919A47F3000058487 /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83819A47F3000058487 /* ContactViewCell.swift */; };
 		F159C83B19A49C1000058487 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83A19A49C1000058487 /* MessageViewController.swift */; };
 		F159C83D19A49C7400058487 /* MessgeCollectionView .swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83C19A49C7400058487 /* MessgeCollectionView .swift */; };
-		F159C83F19A4A1F400058487 /* IncomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83E19A4A1F400058487 /* IncomingMessageCell.swift */; };
 		F159C84119A4A3A400058487 /* MessagesInputToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C84019A4A3A400058487 /* MessagesInputToolbar.swift */; };
 		F159C84319A4A3EA00058487 /* MessagesComposerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C84219A4A3EA00058487 /* MessagesComposerTextView.swift */; };
 		F16B39731994A7C0009E9AF0 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B39721994A7C0009E9AF0 /* util.swift */; };
@@ -31,7 +36,9 @@
 		F17F876919949D9900CB43CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17F876719949D9900CB43CC /* Main.storyboard */; };
 		F17F876B19949D9900CB43CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17F876A19949D9900CB43CC /* Images.xcassets */; };
 		F17F877719949D9900CB43CC /* CampfireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F877619949D9900CB43CC /* CampfireTests.swift */; };
+		F18693B919B6FDBB006CD935 /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18693B819B6FDBB006CD935 /* SQLiteDB.swift */; };
 		F18A7545199B160B002FE6FB /* SocketIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A7544199B160B002FE6FB /* SocketIO.swift */; };
+		F1907D9D19A970FB0079DE92 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1907D9C19A970FB0079DE92 /* libsqlite3.0.dylib */; };
 		F19AE2CC199857CE00C72FD5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AE2CB199857CE00C72FD5 /* Session.swift */; };
 		F19AE2CE199892B500C72FD5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AE2CD199892B500C72FD5 /* MainViewController.swift */; };
 		F19AE2D71998A40100C72FD5 /* tabbar_contacts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AE2D11998A40100C72FD5 /* tabbar_contacts@2x.png */; };
@@ -61,6 +68,13 @@
 		F136C1C4199A1B9B001F6A26 /* Websocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
 		F1505B8919A580FA001412E6 /* MessageKeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageKeyboardController.swift; sourceTree = "<group>"; };
 		F1505B8B19A59AAF001412E6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F153CA5719B705A10039E8F0 /* PersistenceProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceProcessor.swift; sourceTree = "<group>"; };
+		F1560F0019A6167600101C68 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		F1560F0219A6250300101C68 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		F1560F0419A6329E00101C68 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
+		F1560F0619A63C5F00101C68 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F1560F0819A63F3500101C68 /* bubble_min.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_min.png; sourceTree = "<group>"; };
+		F1560F0919A63F3500101C68 /* bubble_min@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_min@2x.png"; sourceTree = "<group>"; };
 		F159C82C19A4771300058487 /* SWWebImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageDownloader.swift; sourceTree = "<group>"; };
 		F159C82D19A4771300058487 /* SWWebImageDownloaderOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageDownloaderOperation.swift; sourceTree = "<group>"; };
 		F159C82E19A4771300058487 /* SWWebImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageManager.swift; sourceTree = "<group>"; };
@@ -70,7 +84,6 @@
 		F159C83819A47F3000058487 /* ContactViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		F159C83A19A49C1000058487 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		F159C83C19A49C7400058487 /* MessgeCollectionView .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessgeCollectionView .swift"; sourceTree = "<group>"; };
-		F159C83E19A4A1F400058487 /* IncomingMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingMessageCell.swift; sourceTree = "<group>"; };
 		F159C84019A4A3A400058487 /* MessagesInputToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesInputToolbar.swift; sourceTree = "<group>"; };
 		F159C84219A4A3EA00058487 /* MessagesComposerTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesComposerTextView.swift; sourceTree = "<group>"; };
 		F16B39721994A7C0009E9AF0 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
@@ -84,7 +97,9 @@
 		F17F877019949D9900CB43CC /* CampfireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CampfireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17F877519949D9900CB43CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F17F877619949D9900CB43CC /* CampfireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampfireTests.swift; sourceTree = "<group>"; };
+		F18693B819B6FDBB006CD935 /* SQLiteDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDB.swift; sourceTree = "<group>"; };
 		F18A7544199B160B002FE6FB /* SocketIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIO.swift; sourceTree = "<group>"; };
+		F1907D9C19A970FB0079DE92 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		F19AE2CB199857CE00C72FD5 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		F19AE2CD199892B500C72FD5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F19AE2D11998A40100C72FD5 /* tabbar_contacts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_contacts@2x.png"; sourceTree = "<group>"; };
@@ -107,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1907D9D19A970FB0079DE92 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,14 +139,17 @@
 		F136C1BD1999B0F5001F6A26 /* chat */ = {
 			isa = PBXGroup;
 			children = (
+				F1560F0819A63F3500101C68 /* bubble_min.png */,
+				F1560F0919A63F3500101C68 /* bubble_min@2x.png */,
 				F136C1C01999B13D001F6A26 /* ChatViewController.swift */,
 				F159C83A19A49C1000058487 /* MessageViewController.swift */,
 				F159C83C19A49C7400058487 /* MessgeCollectionView .swift */,
-				F159C83E19A4A1F400058487 /* IncomingMessageCell.swift */,
 				F159C84019A4A3A400058487 /* MessagesInputToolbar.swift */,
 				F159C84219A4A3EA00058487 /* MessagesComposerTextView.swift */,
 				F1505B8919A580FA001412E6 /* MessageKeyboardController.swift */,
 				F1505B8B19A59AAF001412E6 /* Message.swift */,
+				F1560F0219A6250300101C68 /* MessageCell.swift */,
+				F1560F0419A6329E00101C68 /* util.swift */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -149,6 +168,14 @@
 			children = (
 			);
 			path = me;
+			sourceTree = "<group>";
+		};
+		F1560EFF19A6166C00101C68 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				F1560F0019A6167600101C68 /* SwiftyJSON.swift */,
+			);
+			path = json;
 			sourceTree = "<group>";
 		};
 		F159C82B19A4771300058487 /* SWWebImage */ = {
@@ -197,22 +224,24 @@
 		F17F876019949D9900CB43CC /* Campfire */ = {
 			isa = PBXGroup;
 			children = (
-				F159C82B19A4771300058487 /* SWWebImage */,
 				F136C1BD1999B0F5001F6A26 /* chat */,
+				F16B39741994B779009E9AF0 /* communication */,
 				F136C1BE1999B0F5001F6A26 /* contact */,
+				F18693B719B6FD71006CD935 /* database */,
+				F1560EFF19A6166C00101C68 /* json */,
 				F136C1BF1999B0F5001F6A26 /* me */,
 				F19AE2D01998A40100C72FD5 /* resources */,
-				F19AE2CF19989DDB00C72FD5 /* widget */,
-				F16B39741994B779009E9AF0 /* communication */,
-				F17F876319949D9900CB43CC /* AppDelegate.swift */,
-				F17F876519949D9900CB43CC /* ViewController.swift */,
-				F17F876719949D9900CB43CC /* Main.storyboard */,
-				F17F876A19949D9900CB43CC /* Images.xcassets */,
 				F17F876119949D9900CB43CC /* Supporting Files */,
-				F16B39721994A7C0009E9AF0 /* util.swift */,
-				F19AE2CB199857CE00C72FD5 /* Session.swift */,
-				F19AE2CD199892B500C72FD5 /* MainViewController.swift */,
+				F159C82B19A4771300058487 /* SWWebImage */,
+				F19AE2CF19989DDB00C72FD5 /* widget */,
 				F19CBA26199A649D00EA2737 /* Campfire-Bridging-Header.h */,
+				F17F876319949D9900CB43CC /* AppDelegate.swift */,
+				F19AE2CD199892B500C72FD5 /* MainViewController.swift */,
+				F19AE2CB199857CE00C72FD5 /* Session.swift */,
+				F16B39721994A7C0009E9AF0 /* util.swift */,
+				F17F876519949D9900CB43CC /* ViewController.swift */,
+				F17F876A19949D9900CB43CC /* Images.xcassets */,
+				F17F876719949D9900CB43CC /* Main.storyboard */,
 			);
 			path = Campfire;
 			sourceTree = "<group>";
@@ -242,6 +271,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F18693B719B6FD71006CD935 /* database */ = {
+			isa = PBXGroup;
+			children = (
+				F18693B819B6FDBB006CD935 /* SQLiteDB.swift */,
+				F153CA5719B705A10039E8F0 /* PersistenceProcessor.swift */,
+			);
+			path = database;
+			sourceTree = "<group>";
+		};
 		F19AE2CF19989DDB00C72FD5 /* widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +305,8 @@
 		F1D55F8D199A5CEB007F8136 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1907D9C19A970FB0079DE92 /* libsqlite3.0.dylib */,
+				F1560F0619A63C5F00101C68 /* QuartzCore.framework */,
 				F1D55F90199A5E34007F8136 /* libcorecrypto.dylib */,
 				F1D55F8E199A5D0B007F8136 /* libcommonCrypto.dylib */,
 				F1D55F8B199A5C2A007F8136 /* SystemConfiguration.framework */,
@@ -356,10 +396,12 @@
 			files = (
 				F19AE2DC1998A40100C72FD5 /* tabbar_meHL@2x.png in Resources */,
 				F17F876919949D9900CB43CC /* Main.storyboard in Resources */,
+				F1560F0A19A63F3500101C68 /* bubble_min.png in Resources */,
 				F19AE2D91998A40100C72FD5 /* tabbar_mainframe@2x.png in Resources */,
 				F17F876B19949D9900CB43CC /* Images.xcassets in Resources */,
 				F19AE2D71998A40100C72FD5 /* tabbar_contacts@2x.png in Resources */,
 				F19AE2D81998A40100C72FD5 /* tabbar_contactsHL@2x.png in Resources */,
+				F1560F0B19A63F3500101C68 /* bubble_min@2x.png in Resources */,
 				F19AE2DA1998A40100C72FD5 /* tabbar_mainframeHL@2x.png in Resources */,
 				F19AE2DB1998A40100C72FD5 /* tabbar_me@2x.png in Resources */,
 			);
@@ -381,13 +423,13 @@
 			files = (
 				F159C84119A4A3A400058487 /* MessagesInputToolbar.swift in Sources */,
 				F1A210AF199A515800B4663F /* HttpFileUpload.swift in Sources */,
-				F159C83F19A4A1F400058487 /* IncomingMessageCell.swift in Sources */,
 				F19AE2CC199857CE00C72FD5 /* Session.swift in Sources */,
 				F16B39731994A7C0009E9AF0 /* util.swift in Sources */,
 				F159C83619A4771300058487 /* SWWebImageView.swift in Sources */,
 				F17F876619949D9900CB43CC /* ViewController.swift in Sources */,
 				F136C1C5199A1B9B001F6A26 /* Websocket.swift in Sources */,
 				F19AE2E01998BEC600C72FD5 /* TabView.swift in Sources */,
+				F1560F0519A6329E00101C68 /* util.swift in Sources */,
 				F19AE2CE199892B500C72FD5 /* MainViewController.swift in Sources */,
 				F159C84319A4A3EA00058487 /* MessagesComposerTextView.swift in Sources */,
 				F19AE2DE1998A4EA00C72FD5 /* ImageButton.swift in Sources */,
@@ -397,13 +439,17 @@
 				F18A7545199B160B002FE6FB /* SocketIO.swift in Sources */,
 				F159C83219A4771300058487 /* SWWebImageDownloader.swift in Sources */,
 				F159C83B19A49C1000058487 /* MessageViewController.swift in Sources */,
+				F1560F0319A6250300101C68 /* MessageCell.swift in Sources */,
 				F17F876419949D9900CB43CC /* AppDelegate.swift in Sources */,
+				F1560F0119A6167600101C68 /* SwiftyJSON.swift in Sources */,
 				F136C1C11999B13D001F6A26 /* ChatViewController.swift in Sources */,
 				F159C83719A4771300058487 /* util.swift in Sources */,
 				F1505B8C19A59AAF001412E6 /* Message.swift in Sources */,
 				F159C83D19A49C7400058487 /* MessgeCollectionView .swift in Sources */,
+				F153CA5819B705A10039E8F0 /* PersistenceProcessor.swift in Sources */,
 				F159C83319A4771300058487 /* SWWebImageDownloaderOperation.swift in Sources */,
 				F16B39761994B78F009E9AF0 /* HttpConnection.swift in Sources */,
+				F18693B919B6FDBB006CD935 /* SQLiteDB.swift in Sources */,
 				F136C1C31999B302001F6A26 /* ContactsViewController.swift in Sources */,
 				F159C83919A47F3000058487 /* ContactViewCell.swift in Sources */,
 			);
@@ -527,7 +573,7 @@
 					"$(PROJECT_DIR)/Campfire",
 				);
 				INFOPLIST_FILE = Campfire/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -551,7 +597,7 @@
 					"$(PROJECT_DIR)/Campfire",
 				);
 				INFOPLIST_FILE = Campfire/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

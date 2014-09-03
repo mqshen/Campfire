@@ -27,6 +27,8 @@ class MessagesComposerTextView: UITextView
         self.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.layer.cornerRadius = cornerRadius
         
+        self.textContainerInset = UIEdgeInsetsMake(4.0, 2.0, 4.0, 2.0)
+        
         self.scrollIndicatorInsets = UIEdgeInsetsMake(cornerRadius, 0.0, cornerRadius, 0.0)
         
         self.contentInset = UIEdgeInsetsMake(2.0, 0.0, 2.0, 0.0)
@@ -35,7 +37,7 @@ class MessagesComposerTextView: UITextView
         self.scrollsToTop = false
         self.userInteractionEnabled = true
         
-        self.font = UIFont.systemFontOfSize(16)
+        self.font = UIFont.systemFontOfSize(14)
         self.textColor = UIColor.blackColor()
         self.textAlignment = NSTextAlignment.Left
         

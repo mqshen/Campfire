@@ -57,7 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         func handler(response: NSDictionary) {
             let session = Session.sharedInstance
-            session.userName = response["name"]! as? String
+            session.userName = response["userName"]! as? String
             session.nickName = response["nickName"]! as? String
             
             let mainController = MainViewController()

@@ -10,18 +10,20 @@ import Foundation
 import UIKit
 
 let IncomingMessage = "IncomingMessage"
+let OutgoingMessage = "OutgoingMessage"
 let TOOLBAR_HEIGHT: CGFloat = 44
 let kMessagesKeyValueObservingContext = UnsafeMutablePointer<Void>.alloc(1)
 
-class MessageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MessagesKeyboardControllerDelegate, MessageInputViewDelegate
+class MessageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MessagesKeyboardControllerDelegate, MessageInputViewDelegate
 {
     var collectionView: MessgeCollectionView?
     var inputToolbar: MessagesInputToolbar?
     var toolbarBottomLayoutGuide: NSLayoutConstraint?
     var toolbarHeightConstraint: NSLayoutConstraint?
     var keyboardController: MessageKeyboardController?
+    var messages = [Message]()
     
-    var toUserName: String?
+    var toUser: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +79,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.collectionView?.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         self.collectionView?.registerClass(IncomingMessageCell.self, forCellWithReuseIdentifier: IncomingMessage)
+        self.collectionView?.registerClass(OutgoingMessageCell.self, forCellWithReuseIdentifier: OutgoingMessage)
         
         
         let height = frame.size.height - TOOLBAR_HEIGHT
@@ -136,11 +139,36 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     
     func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return messages.count
+    }
+    
+    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+        
+        var height:CGFloat = 20
+        let message = self.messages[indexPath.row]
+        
+        let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(14)]
+        let maximumSize = CGSizeMake(220, CGFloat.max)
+        
+        // Need to cast stringValue to an NSString in order to call boundingRectWithSize(_:options:attributes:).
+        let boundingSize = message.content.boundingRectWithSize(maximumSize,
+            options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+            attributes: attributes,
+            context: nil)
+        
+        height += boundingSize.size.height
+        
+        return CGSizeMake(320, height)
     }
     
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
-        return nil
+        let message = self.messages[indexPath.row]
+        let myName = Session.sharedInstance.userName
+        let cellIdentify = myName! == message.fromUserName ? OutgoingMessage : IncomingMessage
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentify, forIndexPath: indexPath) as MessageCell
+        cell.message = self.messages[indexPath.row]
+        return cell
     }
     
     
@@ -299,10 +327,17 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
                 return false
             }
             let session = Session.sharedInstance
-            let message = Message(fromUserName: session.userName!, toUserName: self.toUserName!, type: 1, content: content, clientMsgId: 1)
+            let message = Message(fromUserName: session.userName!,
+                toUserName: self.toUser!.name,
+                type: 1,
+                content: content,
+                clientMsgId: 1)
+            
+            self.messages.append(message)
             session.socketIO?.sendEvent("{\"name\": \"chat\", \"args\":[\(message.toJson())]}")
             
             textView.text = ""
+            self.finishSendingOrReceivingMessage()
             return false
         }
         return true
@@ -311,4 +346,16 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
     func didSelectedMultipleMediaAction(change: Bool) {
         
     }
+    
+    func textViewDidBeginEditing(textView: UITextView!) {
+        textView.becomeFirstResponder()
+        //_processInputBar = NO;
+        self.scrollToBottomAnimated(true)
+    }
+    
+    func finishSendingOrReceivingMessage() {
+        self.collectionView?.reloadData()
+        self.scrollToBottomAnimated(true)
+    }
+    
 }

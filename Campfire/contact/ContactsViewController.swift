@@ -12,7 +12,7 @@ import UIKit
 class ContactsViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate
 {
     
-    var contacts = NSMutableArray()
+    var contacts = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,10 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
         self.tableView.tableHeaderView = searchView
     }
     
-    func receiveContacts(contacts: NSArray) {
-        self.contacts.addObjectsFromArray(contacts)
+    func receiveContacts(contacts: Array<User>) {
+        for user in contacts {
+            self.contacts.append(user)
+        }
         self.tableView.reloadData()
     }
     
@@ -40,10 +42,10 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
             cell = ContactViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "neighborCell")
             //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        let avatarUrl = self.contacts[indexPath.row].objectForKey("avatar") as String
+        let avatarUrl = self.contacts[indexPath.row].avatar
         cell?.setAvatar(avatarUrl)
         
-        cell?.textLabel.text = self.contacts[indexPath.row].objectForKey("nickName") as String
+        cell?.textLabel.text = self.contacts[indexPath.row].nickName
         return cell;
     }
     
@@ -52,7 +54,7 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
     }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        var userName = self.contacts[indexPath.row].objectForKey("name") as String
-        NSNotificationCenter.defaultCenter().postNotificationName(StartChatNotification, object: nil, userInfo: ["userName":userName])
+        var user = self.contacts[indexPath.row]
+        NSNotificationCenter.defaultCenter().postNotificationName(StartChatNotification, object: nil, userInfo: ["user":user])
     }
 }

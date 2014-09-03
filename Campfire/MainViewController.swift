@@ -16,6 +16,8 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
     
     var containerView: UIView?
     var contentView: UIView?
+    
+    let persistence = PersistenceProcessor()
     //var socketIO: SocketIO?
     let chatViewController: ChatViewController = ChatViewController()
     let contactsViewController: ContactsViewController = ContactsViewController()
@@ -68,9 +70,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
     
     func startChat(note: NSNotification) {
         if let userInfo = note.userInfo? {
-            if let userName: AnyObject = userInfo["userName"]? {
+            if let user: AnyObject = userInfo["user"]? {
                 self.tabBar?.setSelect(0)
-                self.chatViewController.startChat(userName as String)
+                self.chatViewController.startChat(user as User)
             }
         }
     }
@@ -110,28 +112,75 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
     func socketIODidReceiveMessage(message: String) {
         println(message)
         if let data = message.dataUsingEncoding(NSUTF8StringEncoding)? {
-            var e: NSError?
-            var responseDic = NSJSONSerialization.JSONObjectWithData( data,
-                options: NSJSONReadingOptions(0),
-                error: &e) as NSDictionary
-            if e != nil {
-                print(e)
-            }
-            else {
-                let name = responseDic["name"] as String
+            let responseDic = JSONValue(data: data )
+            if let name = responseDic["name"].string? {
                 if name == "chat" {
-                    chatViewController.receiveMessage(responseDic["content"] as NSDictionary)
+                    let obj = responseDic["content"]
+                    let fromUserName = obj["fromUserName"].string
+                    let toUserName = obj["toUserName"].string
+                    let type = obj["type"].integer
+                    let content = obj["content"].string
+                    let clientMsgId = obj["clientMsgId"].integer
+                    if fromUserName != nil && toUserName != nil && type != nil && content != nil && clientMsgId != nil {
+                        let message = Message(fromUserName: fromUserName!,
+                            toUserName: toUserName!,
+                            type: type!,
+                            content: content!,
+                            clientMsgId: Int64(clientMsgId!))
+                        
+                        chatViewController.receiveMessage(message)
+                    }
                 }
-                else {
-                    contactsViewController.receiveContacts(responseDic["content"] as NSArray)
+                else if name == "sync" {
+                    var lastSyncKey = 0
+                    if let operations = responseDic["content"].array? {
+                        for operation in operations {
+                            let syncType = operation["syncType"].string
+                            if syncType == "user" {
+                                let operationType = operation["operation"].string
+                                if operationType == "add" {
+                                    let content = operation["content"]
+                                    let userName = content["userName"].string
+                                    let nickName = content["nickName"].string
+                                    let avatar = content["avatar"].string
+                                    if (userName != nil && nickName != nil && avatar != nil) {
+                                        persistence.addFriend(User(name: userName!, nickName: nickName!, avatar: avatar!))
+                                    }
+                                }
+                            }
+                            if let syncKey = operation["syncKey"].integer? {
+                                lastSyncKey = syncKey
+                            }
+                        }
+                    }
+                    let users = persistence.getFriends()
+                    persistence.updateSyncKey(lastSyncKey)
+                    
+                    contactsViewController.receiveContacts(users)
+                    
                 }
+//                else {
+//                    var users = [User]()
+//                    if let contacts = responseDic["content"].array? {
+//                        for contact in contacts {
+//                            let userName = contact["name"].string
+//                            let nickName = contact["nickName"].string
+//                            let avatar = contact["avatar"].string
+//                            if (userName != nil && nickName != nil && avatar != nil) {
+//                                users.append( User(name: userName!, nickName: nickName!, avatar: avatar!))
+//                            }
+//                        }
+//                    }
+//                    contactsViewController.receiveContacts(users)
+//                }
             }
         }
     }
     
     func socketIODidConnect() {
         let session = Session.sharedInstance
-        session.socketIO!.sendEvent("{\"name\":\"contacts\"}")
+        let syncKey = persistence.getSyncKey()
+        session.socketIO!.sendEvent("{\"name\":\"sync\", \"args\":[\(syncKey)]}")
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

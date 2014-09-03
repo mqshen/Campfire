@@ -8,6 +8,17 @@
 
 import Foundation
 
+class User {
+    let name: String
+    let nickName: String
+    let avatar: String
+    
+    init(name: String, nickName: String, avatar: String) {
+        self.name = name
+        self.nickName = nickName
+        self.avatar = avatar
+    }
+}
 
 class Session {
     class var sharedInstance: Session {
