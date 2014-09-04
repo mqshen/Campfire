@@ -56,11 +56,10 @@ class ChatViewController: UITableViewController
             let message = self.chats[indexPath.row].1
             cell?.recentLabel.text = message.content
             let createTime = NSDate(timeIntervalSince1970: Double(message.createTime))
-            println(createTime.timeAgo())
             cell?.timeLabel.text = createTime.timeAgo()
         }
         
-        return cell;
+        return cell
     }
     
     override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
@@ -76,27 +75,37 @@ class ChatViewController: UITableViewController
     }
     
     func startChat(userName: String) {
+        for chat in chats {
+            if userName == chat.0 {
+                self.pushViewController(userName)
+                return
+            }
+        }
         chats.append((userName, Message()))
         self.tableView.reloadData()
+        self.pushViewController(userName)
     }
     
 //    func addChat(user: User, message: Message) {
 //        chats.append(user)
 //    }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let messageViewController = MessageViewController()
-        if let mainViewController = self.mainViewController? {
-            let userName = self.chats[indexPath.row].0
-            if let user = Session.sharedInstance.getUser(userName)? {
+    func pushViewController(userName: String) {
+        if let user = Session.sharedInstance.getUser(userName)? {
+            let messageViewController = MessageViewController()
+            if let mainViewController = self.mainViewController? {
                 messageViewController.toUser = user
                 self.currentUserName = userName
                 mainViewController.navigationController.pushViewController(messageViewController, animated: true)
                 self.messageViewController = messageViewController
             }
-            
         }
+    }
+    
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let userName = self.chats[indexPath.row].0
+        self.pushViewController(userName)
     }
     
 }

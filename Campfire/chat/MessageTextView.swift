@@ -11,7 +11,17 @@ import UIKit
 
 class MessageTextView: UIView
 {
-    var text: String = ""
+    var _text: String = ""
+    var text: String {
+        get {
+            return _text
+        }
+        set {
+            _text = newValue
+            self.setNeedsDisplay()
+            
+        }
+    }
     var textColor: UIColor = UIColor.blackColor()
     var font: UIFont = UIFont.systemFontOfSize(14)
     

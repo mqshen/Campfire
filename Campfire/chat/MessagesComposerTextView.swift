@@ -45,7 +45,7 @@ class MessagesComposerTextView: UITextView
         self.dataDetectorTypes = UIDataDetectorTypes.None
         self.keyboardAppearance = UIKeyboardAppearance.Default
         self.keyboardType = UIKeyboardType.Default
-        self.returnKeyType = UIReturnKeyType.Default
+        self.returnKeyType = UIReturnKeyType.Send
         
         self.addTextViewNotificationObservers()
     }

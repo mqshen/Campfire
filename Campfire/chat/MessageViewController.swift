@@ -38,9 +38,15 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController.navigationBar.tintColor = UIColor.whiteColor()
+        
+        if let u = user? {
+            self.title = u.nickName
+        }
         let layout = UICollectionViewFlowLayout()
         let frame = self.view.bounds
         
+        self.automaticallyAdjustsScrollViewInsets = false
         self.collectionView = MessgeCollectionView(frame: frame, collectionViewLayout: layout)
         self.collectionView?.delegate = self
         self.collectionView?.dataSource = self
@@ -147,6 +153,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.inputToolbar?.addConstraint(self.toolbarHeightConstraint!)
         
         self.setToolbarBottomLayoutGuideConstant(0)
+        self.scrollToBottomAnimated(false)
     }
     
     
@@ -183,6 +190,8 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
         return cell
     }
     
+    override func viewWillAppear(animated: Bool) {
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -194,7 +203,6 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidDisappear(animated)
         self.removeContentSizeObserver()
         self.keyboardController?.endListeningForKeyboard()
-        
     }
     
     
