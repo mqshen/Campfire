@@ -23,7 +23,17 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
     var keyboardController: MessageKeyboardController?
     var messages = [Message]()
     
-    var toUser: User?
+    var user: User?
+    
+    var toUser: User? {
+        get {
+            return user
+        }
+        set {
+            user = newValue
+            messages = PersistenceProcessor.sharedInstance.getRecentMessages(user!.name, page: 0)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +44,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.collectionView = MessgeCollectionView(frame: frame, collectionViewLayout: layout)
         self.collectionView?.delegate = self
         self.collectionView?.dataSource = self
-        self.collectionView?.backgroundColor = UIColor.redColor()
+        self.collectionView?.backgroundColor = UIColorFromRGB(0xE5E5E5)
         self.view.addSubview(self.collectionView!)
         
         let left = NSLayoutConstraint(item: self.collectionView,
@@ -135,6 +145,8 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
             constant: TOOLBAR_HEIGHT)
         
         self.inputToolbar?.addConstraint(self.toolbarHeightConstraint!)
+        
+        self.setToolbarBottomLayoutGuideConstant(0)
     }
     
     
@@ -327,13 +339,19 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
                 return false
             }
             let session = Session.sharedInstance
+            let now = NSDate.date()
+            
             let message = Message(fromUserName: session.userName!,
                 toUserName: self.toUser!.name,
                 type: 1,
                 content: content,
-                clientMsgId: 1)
+                clientMsgId: 1,
+                createTime: Int(now.timeIntervalSince1970))
             
             self.messages.append(message)
+            
+            PersistenceProcessor.sharedInstance.sendMessage(message)
+            
             session.socketIO?.sendEvent("{\"name\": \"chat\", \"args\":[\(message.toJson())]}")
             
             textView.text = ""
@@ -341,6 +359,11 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
             return false
         }
         return true
+    }
+    
+    func receiveMessage(message: Message) {
+        self.messages.append(message)
+        self.finishSendingOrReceivingMessage()
     }
     
     func didSelectedMultipleMediaAction(change: Bool) {

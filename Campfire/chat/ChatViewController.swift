@@ -15,7 +15,9 @@ class ChatViewController: UITableViewController
     
     var mainViewController: UIViewController?
     
-    var chats = [User]()
+    var chats = [(String, Message)]()
+    var currentUserName: String? = nil
+    var messageViewController: MessageViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,12 @@ class ChatViewController: UITableViewController
         let searchView = UIView(frame: CGRectMake(0, 0, frame.size.width, 30))
         self.tableView.tableHeaderView = searchView
         
+        
+    }
+    
+    func refresh() {
+        chats = PersistenceProcessor.sharedInstance.getRecentChats()
+        self.tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
@@ -35,15 +43,23 @@ class ChatViewController: UITableViewController
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell: ContactViewCell? = tableView.dequeueReusableCellWithIdentifier( "neighborCell" ) as? ContactViewCell
+        var cell: ChatViewCell? = tableView.dequeueReusableCellWithIdentifier( "neighborCell" ) as? ChatViewCell
         if (cell == nil) {
-            cell = ContactViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "neighborCell")
+            cell = ChatViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "neighborCell")
             //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        let avatarUrl = self.chats[indexPath.row].avatar
-        cell?.setAvatar(avatarUrl)
+        let userName = self.chats[indexPath.row].0
+        if let user = Session.sharedInstance.getUser(userName)? {
+            cell?.setAvatar(user.avatar)
+            cell?.textLabel.text = user.nickName
+            
+            let message = self.chats[indexPath.row].1
+            cell?.recentLabel.text = message.content
+            let createTime = NSDate(timeIntervalSince1970: Double(message.createTime))
+            println(createTime.timeAgo())
+            cell?.timeLabel.text = createTime.timeAgo()
+        }
         
-        cell?.textLabel.text = self.chats[indexPath.row].nickName
         return cell;
     }
     
@@ -52,20 +68,34 @@ class ChatViewController: UITableViewController
     }
     
     func receiveMessage(message: Message) {
-        
+        if let userName = self.currentUserName? {
+            if userName == message.fromUserName {
+                self.messageViewController?.receiveMessage(message)
+            }
+        }
     }
     
-    func startChat(user: User) {
-        chats.append(user)
+    func startChat(userName: String) {
+        chats.append((userName, Message()))
         self.tableView.reloadData()
     }
+    
+//    func addChat(user: User, message: Message) {
+//        chats.append(user)
+//    }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let messageViewController = MessageViewController()
         if let mainViewController = self.mainViewController? {
-            messageViewController.toUser = chats[indexPath.row]
-            mainViewController.navigationController.pushViewController(messageViewController, animated: true)
+            let userName = self.chats[indexPath.row].0
+            if let user = Session.sharedInstance.getUser(userName)? {
+                messageViewController.toUser = user
+                self.currentUserName = userName
+                mainViewController.navigationController.pushViewController(messageViewController, animated: true)
+                self.messageViewController = messageViewController
+            }
+            
         }
     }
     

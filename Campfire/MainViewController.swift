@@ -17,13 +17,10 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
     var containerView: UIView?
     var contentView: UIView?
     
-    let persistence = PersistenceProcessor()
     //var socketIO: SocketIO?
     let chatViewController: ChatViewController = ChatViewController()
     let contactsViewController: ContactsViewController = ContactsViewController()
     var tabBar: TabView?
-    
-    
     
     
     override func viewDidLoad() {
@@ -61,6 +58,8 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
         
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startChat:", name: StartChatNotification, object: nil)
+        
+        self.didSelect(0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,9 +69,11 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
     
     func startChat(note: NSNotification) {
         if let userInfo = note.userInfo? {
-            if let user: AnyObject = userInfo["user"]? {
+            if let object: AnyObject = userInfo["user"]? {
                 self.tabBar?.setSelect(0)
-                self.chatViewController.startChat(user as User)
+                let user = object as User
+                self.chatViewController.startChat(user.name)
+                PersistenceProcessor.sharedInstance.createChatTable(user.name)
             }
         }
     }
@@ -126,9 +127,11 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
                             toUserName: toUserName!,
                             type: type!,
                             content: content!,
-                            clientMsgId: Int64(clientMsgId!))
+                            clientMsgId: Int64(clientMsgId!),
+                            createTime: 1405163553)
                         
                         chatViewController.receiveMessage(message)
+                        PersistenceProcessor.sharedInstance.addMessage(message)
                     }
                 }
                 else if name == "sync" {
@@ -144,7 +147,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
                                     let nickName = content["nickName"].string
                                     let avatar = content["avatar"].string
                                     if (userName != nil && nickName != nil && avatar != nil) {
-                                        persistence.addFriend(User(name: userName!, nickName: nickName!, avatar: avatar!))
+                                        PersistenceProcessor.sharedInstance.addFriend(User(name: userName!, nickName: nickName!, avatar: avatar!))
                                     }
                                 }
                             }
@@ -153,10 +156,15 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
                             }
                         }
                     }
-                    let users = persistence.getFriends()
-                    persistence.updateSyncKey(lastSyncKey)
+                    let users = PersistenceProcessor.sharedInstance.getFriends()
+                    PersistenceProcessor.sharedInstance.updateSyncKey(lastSyncKey)
                     
-                    contactsViewController.receiveContacts(users)
+//                    for use in users {
+//                        Session.sharedInstance.friends.append(use)
+//                    }
+                    Session.sharedInstance.friends = users
+                    self.chatViewController.refresh()
+                    //contactsViewController.receiveContacts(users)
                     
                 }
 //                else {
@@ -179,7 +187,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
     
     func socketIODidConnect() {
         let session = Session.sharedInstance
-        let syncKey = persistence.getSyncKey()
+        let syncKey = PersistenceProcessor.sharedInstance.getSyncKey()
         session.socketIO!.sendEvent("{\"name\":\"sync\", \"args\":[\(syncKey)]}")
     }
     

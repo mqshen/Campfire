@@ -33,4 +33,15 @@ class Session {
     var sessionId: String?
     var socketIO: SocketIO?
     
+    var friends = Array<User>()
+    
+    func getUser(userName: String) -> User? {
+        for user in friends {
+            if user.name == userName {
+                return user
+            }
+        }
+        return nil
+    }
+    
 }

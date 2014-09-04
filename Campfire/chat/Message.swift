@@ -15,13 +15,24 @@ class Message
     let type: Int
     let content: String
     let clientMsgId: Int64
+    let createTime: Int
     
-    init(fromUserName: String, toUserName: String, type: Int, content: String, clientMsgId: Int64) {
+    init() {
+        self.fromUserName = ""
+        self.toUserName = ""
+        self.type = 0
+        self.content = ""
+        self.clientMsgId = 0
+        self.createTime = 0
+    }
+    
+    init(fromUserName: String, toUserName: String, type: Int, content: String, clientMsgId: Int64, createTime: Int) {
         self.fromUserName = fromUserName
         self.toUserName = toUserName
         self.type = type
         self.content = content
         self.clientMsgId = clientMsgId
+        self.createTime = createTime
     }
     
     func toJson() -> String {

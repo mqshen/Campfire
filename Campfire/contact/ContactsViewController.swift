@@ -11,9 +11,6 @@ import UIKit
 
 class ContactsViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate
 {
-    
-    var contacts = [User]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -26,14 +23,14 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
     }
     
     func receiveContacts(contacts: Array<User>) {
-        for user in contacts {
-            self.contacts.append(user)
-        }
+//        for user in contacts {
+//            Session.sharedInstance.friends.append(user)
+//        }
         self.tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return self.contacts.count
+        return Session.sharedInstance.friends.count
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
@@ -42,10 +39,10 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
             cell = ContactViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "neighborCell")
             //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        let avatarUrl = self.contacts[indexPath.row].avatar
+        let avatarUrl = Session.sharedInstance.friends[indexPath.row].avatar
         cell?.setAvatar(avatarUrl)
         
-        cell?.textLabel.text = self.contacts[indexPath.row].nickName
+        cell?.textLabel.text = Session.sharedInstance.friends[indexPath.row].nickName
         return cell;
     }
     
@@ -54,7 +51,7 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
     }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        var user = self.contacts[indexPath.row]
+        var user = Session.sharedInstance.friends[indexPath.row]
         NSNotificationCenter.defaultCenter().postNotificationName(StartChatNotification, object: nil, userInfo: ["user":user])
     }
 }

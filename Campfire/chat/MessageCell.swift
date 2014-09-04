@@ -38,7 +38,7 @@ class MessageCell: UICollectionViewCell
     var avatarView: SWWebImageView?
     var messageBubbleContainerView: UIView?
     var messageBubbleImageView: UIImageView?
-    var textView: UITextView?
+    var textView: MessageTextView?
     
     func setTime(show: Bool) {
         if _showTime == show {
@@ -66,8 +66,8 @@ class MessageCell: UICollectionViewCell
     
     func calculateMessageFrame(boundingFrame: CGRect) -> CGRect {
         var frame = self.messageBubbleContainerView!.frame
-        frame.size.width = boundingFrame.size.width + 20
-        frame.size.height = boundingFrame.size.height + 20
+        frame.size.width = boundingFrame.size.width + 25
+        frame.size.height = boundingFrame.size.height + 16
         return frame
     }
     
@@ -102,7 +102,7 @@ class IncomingMessageCell: MessageCell
         messageBubbleImageView = bubbleImageView(UIColor.whiteColor(), false)
         
         messageBubbleContainerView = UIView(frame: CGRectMake(43, 0, 200, 30))
-        textView = UITextView(frame: CGRectMake(10, 5, 200, 20))
+        textView = MessageTextView(frame: CGRectMake(10, 5, 200, 20))
         textView?.backgroundColor = UIColor.clearColor()
         textView?.font = UIFont.systemFontOfSize(14)
         messageBubbleContainerView?.addSubview(textView!)
@@ -120,7 +120,7 @@ class IncomingMessageCell: MessageCell
             toItem: self.textView,
             attribute: NSLayoutAttribute.Leading,
             multiplier: 1,
-            constant: -10))
+            constant: -13))
         
         self.messageBubbleContainerView?.addConstraint(NSLayoutConstraint(item: self.messageBubbleContainerView!,
             attribute: NSLayoutAttribute.Trailing,
@@ -128,7 +128,7 @@ class IncomingMessageCell: MessageCell
             toItem: self.textView,
             attribute: NSLayoutAttribute.Trailing,
             multiplier: 1,
-            constant: -5))
+            constant: 8))
         
         self.messageBubbleContainerView?.addConstraint(NSLayoutConstraint(item: self.messageBubbleContainerView!,
             attribute: NSLayoutAttribute.Top,
@@ -136,7 +136,7 @@ class IncomingMessageCell: MessageCell
             toItem: self.textView,
             attribute: NSLayoutAttribute.Top,
             multiplier: 1,
-            constant: -5))
+            constant: -8))
         
         self.messageBubbleContainerView?.addConstraint(NSLayoutConstraint(item: self.messageBubbleContainerView!,
             attribute: NSLayoutAttribute.Bottom,
@@ -144,7 +144,7 @@ class IncomingMessageCell: MessageCell
             toItem: self.textView,
             attribute: NSLayoutAttribute.Bottom,
             multiplier: 1,
-            constant: -5))
+            constant: 8))
         
         self.addSubview(avatarView!)
         self.addSubview(messageBubbleContainerView!)
@@ -159,12 +159,13 @@ class OutgoingMessageCell: MessageCell
     override init(frame: CGRect) {
         super.init(frame: frame)
         avatarView = SWWebImageView(frame: CGRectMake(280, 0, 30, 30))
-        messageBubbleImageView = bubbleImageView(UIColor.blueColor(), true)
+        messageBubbleImageView = bubbleImageView(UIColorFromRGB(0x97E34A), true)
         
         messageBubbleContainerView = UIView(frame: CGRectMake(77, 0, 200, 30))
-        textView = UITextView(frame: CGRectMake(10, 5, 200, 20))
+        textView = MessageTextView(frame: CGRectMake(10, 5, 200, 20))
         textView?.backgroundColor = UIColor.clearColor()
         textView?.font = UIFont.systemFontOfSize(14)
+        textView?.textColor = UIColor.whiteColor()
         messageBubbleContainerView?.addSubview(textView!)
         
         messageBubbleImageView?.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -180,7 +181,7 @@ class OutgoingMessageCell: MessageCell
             toItem: self.textView,
             attribute: NSLayoutAttribute.Leading,
             multiplier: 1,
-            constant: -5))
+            constant: -8))
         
         self.messageBubbleContainerView?.addConstraint(NSLayoutConstraint(item: self.messageBubbleContainerView!,
             attribute: NSLayoutAttribute.Trailing,
@@ -188,7 +189,7 @@ class OutgoingMessageCell: MessageCell
             toItem: self.textView,
             attribute: NSLayoutAttribute.Trailing,
             multiplier: 1,
-            constant: -10))
+            constant: 10))
         
         self.messageBubbleContainerView?.addConstraint(NSLayoutConstraint(item: self.messageBubbleContainerView!,
             attribute: NSLayoutAttribute.Top,
@@ -196,7 +197,7 @@ class OutgoingMessageCell: MessageCell
             toItem: self.textView,
             attribute: NSLayoutAttribute.Top,
             multiplier: 1,
-            constant: -5))
+            constant: -8))
         
         self.messageBubbleContainerView?.addConstraint(NSLayoutConstraint(item: self.messageBubbleContainerView!,
             attribute: NSLayoutAttribute.Bottom,
@@ -204,7 +205,7 @@ class OutgoingMessageCell: MessageCell
             toItem: self.textView,
             attribute: NSLayoutAttribute.Bottom,
             multiplier: 1,
-            constant: -5))
+            constant: 8))
         
         self.addSubview(avatarView!)
         self.addSubview(messageBubbleContainerView!)
@@ -212,10 +213,10 @@ class OutgoingMessageCell: MessageCell
     
     override func calculateMessageFrame(boundingFrame: CGRect) -> CGRect {
         var frame = self.messageBubbleContainerView!.frame
-        let width = boundingFrame.size.width + 20
+        let width = boundingFrame.size.width + 25
         frame.origin.x = 320 - 43 - width;
         frame.size.width = width
-        frame.size.height = boundingFrame.size.height + 20
+        frame.size.height = boundingFrame.size.height + 16
         return frame
     }
 }
