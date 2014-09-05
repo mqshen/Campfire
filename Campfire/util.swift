@@ -26,7 +26,6 @@ let SERVER_ADD = "http://localhost:8080/"
 let WEBSOCKET_SERVER_ADD = "ws://localhost:8080/"
 
 
-
 let MAIN_BOTTON_FONT = UIFont.systemFontOfSize(9)
 
 

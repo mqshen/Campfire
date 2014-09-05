@@ -40,6 +40,7 @@
 		F17F877719949D9900CB43CC /* CampfireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F877619949D9900CB43CC /* CampfireTests.swift */; };
 		F18693B919B6FDBB006CD935 /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18693B819B6FDBB006CD935 /* SQLiteDB.swift */; };
 		F18A7545199B160B002FE6FB /* SocketIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A7544199B160B002FE6FB /* SocketIO.swift */; };
+		F18A7A7819B97B1500FE53EF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18A7A7719B97B1500FE53EF /* SearchViewController.swift */; };
 		F1907D9D19A970FB0079DE92 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1907D9C19A970FB0079DE92 /* libsqlite3.0.dylib */; };
 		F19AE2CC199857CE00C72FD5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AE2CB199857CE00C72FD5 /* Session.swift */; };
 		F19AE2CE199892B500C72FD5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AE2CD199892B500C72FD5 /* MainViewController.swift */; };
@@ -104,6 +105,7 @@
 		F17F877619949D9900CB43CC /* CampfireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampfireTests.swift; sourceTree = "<group>"; };
 		F18693B819B6FDBB006CD935 /* SQLiteDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDB.swift; sourceTree = "<group>"; };
 		F18A7544199B160B002FE6FB /* SocketIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIO.swift; sourceTree = "<group>"; };
+		F18A7A7719B97B1500FE53EF /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F1907D9C19A970FB0079DE92 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		F19AE2CB199857CE00C72FD5 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		F19AE2CD199892B500C72FD5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		F17F876019949D9900CB43CC /* Campfire */ = {
 			isa = PBXGroup;
 			children = (
+				F18A7A7419B97ABD00FE53EF /* search */,
 				F134760919B82E0E00670200 /* util */,
 				F136C1BD1999B0F5001F6A26 /* chat */,
 				F16B39741994B779009E9AF0 /* communication */,
@@ -295,6 +298,14 @@
 				F153CA5719B705A10039E8F0 /* PersistenceProcessor.swift */,
 			);
 			path = database;
+			sourceTree = "<group>";
+		};
+		F18A7A7419B97ABD00FE53EF /* search */ = {
+			isa = PBXGroup;
+			children = (
+				F18A7A7719B97B1500FE53EF /* SearchViewController.swift */,
+			);
+			path = search;
 			sourceTree = "<group>";
 		};
 		F19AE2CF19989DDB00C72FD5 /* widget */ = {
@@ -453,6 +464,7 @@
 				F19AE2DE1998A4EA00C72FD5 /* ImageButton.swift in Sources */,
 				F134760D19B845B000670200 /* MessageTextView.swift in Sources */,
 				F159C83419A4771300058487 /* SWWebImageManager.swift in Sources */,
+				F18A7A7819B97B1500FE53EF /* SearchViewController.swift in Sources */,
 				F1505B8A19A580FA001412E6 /* MessageKeyboardController.swift in Sources */,
 				F159C83519A4771300058487 /* SWWebImageUtil.swift in Sources */,
 				F18A7545199B160B002FE6FB /* SocketIO.swift in Sources */,

@@ -19,6 +19,7 @@ class TabView: UIView {
     var selectedIndex: Int = 0
     var delegate: TabSelectDelegate?
     let buttons: Array<ImageButton> = []
+    let barButtons: Array<UIBarButtonItem> = []
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,6 +46,8 @@ class TabView: UIView {
             if index == 0 {
                 imageButton.select = true
             }
+            let barButton = UIBarButtonItem(customView: imageButton)
+            barButtons.append(barButton)
         }
         
     }

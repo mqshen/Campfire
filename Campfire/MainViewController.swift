@@ -12,37 +12,29 @@ import UIKit
 
 let StartChatNotification = "StartChatNotification"
 
-class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelegate, SocketIODelegate{
-    
-    var containerView: UIView?
-    var contentView: UIView?
+class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODelegate{
     
     //var socketIO: SocketIO?
     let chatViewController: ChatViewController = ChatViewController()
     let contactsViewController: ContactsViewController = ContactsViewController()
-    var tabBar: TabView?
+    
+    var lastViewController: UIViewController?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.chatViewController.mainViewController = self
+        
+        self.viewControllers = [UINavigationController(rootViewController: chatViewController),
+            UINavigationController(rootViewController: contactsViewController)]
         
         //UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
-        self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
-        
         let frame = self.view.frame
-        let height: CGFloat = 50
         
-        tabBar = TabView(frame: CGRectMake(0, frame.size.height - height, frame.size.width, height),
-            nameAndImages:[("聊天" , "tabbar_mainframe@2x.png", "tabbar_mainframeHL@2x.png"),
-                ("通讯录", "tabbar_contacts@2x.png", "tabbar_contactsHL@2x.png"),
-                ("我", "tabbar_me@2x.png", "tabbar_meHL@2x.png")
-            ])
-        tabBar!.delegate = self
-        
-        tabBar!.backgroundColor = UIColorFromRGB(0x22282D)
-        self.view.addSubview(tabBar!)
-        
+        self.view.backgroundColor = UIColor.whiteColor()
+
+        self.tabBar.barTintColor = UIColorFromRGB(0x22282D)
+        self.selectedIndex = 0
+     
         let session = Session.sharedInstance
         
         session.socketIO = SocketIO(url: "socket.io/1/", endpoint: "testendpoint")
@@ -51,64 +43,23 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
         
         self.title = "聊天"
         
-        let navigateBarHeight = self.navigationController.navigationBar.frame.size.height + 20
-        containerView = UIView(frame: CGRectMake(0, navigateBarHeight, frame.size.width, frame.size.height - height - navigateBarHeight))
-        containerView?.backgroundColor = UIColor.whiteColor()
-        self.view.addSubview(containerView!)
-        
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startChat:", name: StartChatNotification, object: nil)
         
-        self.didSelect(0)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    
     func startChat(note: NSNotification) {
         if let userInfo = note.userInfo? {
             if let object: AnyObject = userInfo["user"]? {
-                self.tabBar?.setSelect(0)
                 let user = object as User
                 self.chatViewController.startChat(user.name)
                 PersistenceProcessor.sharedInstance.createChatTable(user.name)
             }
         }
     }
-    
-    func showChat() -> UIView {
-        return chatViewController.view
-    }
-    
-    func showContacts() -> UIView {
-        return contactsViewController.view
-    }
-    
-    func showMe() -> UIView {
-        return UIView()
-    }
-    
-    func didSelect(index: Int) {
-        contentView?.removeFromSuperview()
-        if index == 0 {
-            contentView = self.showChat()
-            self.title = "聊天"
-        }
-        else if index == 1 {
-            contentView = self.showContacts()
-            self.title = "通讯录"
-        }
-        else if index == 2 {
-            contentView = self.showMe()
-            self.title = "我"
-        }
-        let frame:CGRect = containerView!.frame
-        contentView?.frame = CGRectMake(0, 0 , frame.width, frame.height)
-        containerView?.addSubview(contentView!)
-    }
-    
     
     func socketIODidReceiveMessage(message: String) {
         println(message)
@@ -159,28 +110,11 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
                     let users = PersistenceProcessor.sharedInstance.getFriends()
                     PersistenceProcessor.sharedInstance.updateSyncKey(lastSyncKey)
                     
-//                    for use in users {
-//                        Session.sharedInstance.friends.append(use)
-//                    }
                     Session.sharedInstance.friends = users
                     self.chatViewController.refresh()
-                    //contactsViewController.receiveContacts(users)
                     
                 }
-//                else {
-//                    var users = [User]()
-//                    if let contacts = responseDic["content"].array? {
-//                        for contact in contacts {
-//                            let userName = contact["name"].string
-//                            let nickName = contact["nickName"].string
-//                            let avatar = contact["avatar"].string
-//                            if (userName != nil && nickName != nil && avatar != nil) {
-//                                users.append( User(name: userName!, nickName: nickName!, avatar: avatar!))
-//                            }
-//                        }
-//                    }
-//                    contactsViewController.receiveContacts(users)
-//                }
+
             }
         }
     }
@@ -191,7 +125,10 @@ class MainViewController: UIViewController, UITextFieldDelegate, TabSelectDelega
         session.socketIO!.sendEvent("{\"name\":\"sync\", \"args\":[\(syncKey)]}")
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    
+    func doSearch() {
+        let searchViewController = SearchViewController()
+        searchViewController.delegate = self.navigationController
+        self.view.addSubview(searchViewController.view)
     }
 }

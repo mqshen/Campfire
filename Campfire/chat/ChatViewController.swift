@@ -13,25 +13,46 @@ import UIKit
 class ChatViewController: UITableViewController
 {
     
-    var mainViewController: UIViewController?
+    var searchController: UISearchDisplayController?
+    var searchBar: UISearchBar?
     
     var chats = [(String, Message)]()
     var currentUserName: String? = nil
     var messageViewController: MessageViewController?
     
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.tabBarItem = UITabBarItem(title: "聊天",
+            image:  UIImage(named: "tabbar_mainframe@2x.png"),
+            selectedImage: UIImage(named: "tabbar_mainframeHL@2x.png"))
+    }
+    
+    override init(style: UITableViewStyle = UITableViewStyle.Plain) {
+        super.init(style: style)
+        self.tabBarItem = UITabBarItem(title: "聊天",
+            image:  UIImage(named: "tabbar_mainframe@2x.png"),
+            selectedImage: UIImage(named: "tabbar_mainframeHL@2x.png"))
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.automaticallyAdjustsScrollViewInsets = false
+        self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        let frame = self.view.frame
-        let searchView = UIView(frame: CGRectMake(0, 0, frame.size.width, 30))
-        self.tableView.tableHeaderView = searchView
-        
+        self.searchBar = UISearchBar()
+        self.searchBar?.sizeToFit()
+        self.tableView.tableHeaderView = self.searchBar
+        self.searchController = UISearchDisplayController(searchBar: self.searchBar, contentsController: self)
         
     }
+    
     
     func refresh() {
         chats = PersistenceProcessor.sharedInstance.getRecentChats()
@@ -93,12 +114,10 @@ class ChatViewController: UITableViewController
     func pushViewController(userName: String) {
         if let user = Session.sharedInstance.getUser(userName)? {
             let messageViewController = MessageViewController()
-            if let mainViewController = self.mainViewController? {
-                messageViewController.toUser = user
-                self.currentUserName = userName
-                mainViewController.navigationController.pushViewController(messageViewController, animated: true)
-                self.messageViewController = messageViewController
-            }
+            messageViewController.toUser = user
+            self.currentUserName = userName
+            self.navigationController.pushViewController(messageViewController, animated: true)
+            self.messageViewController = messageViewController
         }
     }
     

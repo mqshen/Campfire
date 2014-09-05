@@ -11,21 +11,43 @@ import UIKit
 
 class ContactsViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate
 {
+    var searchBar: UISearchBar?
+    
+    
+    override init(style: UITableViewStyle = UITableViewStyle.Plain) {
+        super.init(style: style)
+        self.tabBarItem = UITabBarItem(title: "通讯录",
+            image:  UIImage(named: "tabbar_contacts@2x.png"),
+            selectedImage: UIImage(named: "tabbar_contactsHL@2x.png"))
+    }
+    
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.tabBarItem = UITabBarItem(title: "通讯录",
+            image:  UIImage(named: "tabbar_contacts@2x.png"),
+            selectedImage: UIImage(named: "tabbar_contactsHL@2x.png"))
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.automaticallyAdjustsScrollViewInsets = false
+        
+        self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        let frame = self.view.frame
-        let searchView = UIView(frame: CGRectMake(0, 0, frame.size.width, 30))
-        self.tableView.tableHeaderView = searchView
+        self.searchBar = UISearchBar()
+        self.searchBar?.sizeToFit()
+        self.tableView.tableHeaderView = self.searchBar
+//        let searchView = UIView(frame: CGRectMake(0, 0, frame.size.width, 30))
+//        self.tableView.tableHeaderView = searchView
     }
     
     func receiveContacts(contacts: Array<User>) {
-//        for user in contacts {
-//            Session.sharedInstance.friends.append(user)
-//        }
         self.tableView.reloadData()
     }
     

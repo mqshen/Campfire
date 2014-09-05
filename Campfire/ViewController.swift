@@ -61,8 +61,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             session.nickName = response["nickName"]! as? String
             
             let mainController = MainViewController()
-            let mainNavigateController = UINavigationController(rootViewController: mainController)
-            self.presentViewController(mainNavigateController, animated: true, completion: nil)
+            //let mainNavigateController = UINavigationController(rootViewController: mainController)
+            self.presentViewController(mainController, animated: true, completion: nil)
         }
         
         func failedHandler(response: NSDictionary) {
