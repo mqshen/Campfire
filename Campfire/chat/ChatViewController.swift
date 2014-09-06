@@ -13,8 +13,9 @@ import UIKit
 class ChatViewController: UITableViewController
 {
     
-    var searchController: UISearchDisplayController?
     var searchBar: UISearchBar?
+    
+    var mainViewController: MainViewController?
     
     var chats = [(String, Message)]()
     var currentUserName: String? = nil
@@ -41,7 +42,7 @@ class ChatViewController: UITableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+        //self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -49,7 +50,6 @@ class ChatViewController: UITableViewController
         self.searchBar = UISearchBar()
         self.searchBar?.sizeToFit()
         self.tableView.tableHeaderView = self.searchBar
-        self.searchController = UISearchDisplayController(searchBar: self.searchBar, contentsController: self)
         
     }
     
@@ -116,7 +116,7 @@ class ChatViewController: UITableViewController
             let messageViewController = MessageViewController()
             messageViewController.toUser = user
             self.currentUserName = userName
-            self.navigationController.pushViewController(messageViewController, animated: true)
+            self.mainViewController?.navigationController?.pushViewController(messageViewController, animated: true)
             self.messageViewController = messageViewController
         }
     }

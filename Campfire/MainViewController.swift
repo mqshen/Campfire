@@ -19,13 +19,17 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
     let contactsViewController: ContactsViewController = ContactsViewController()
     
     var lastViewController: UIViewController?
+    var searchController: UISearchDisplayController?
+    var contactSearchController: UISearchDisplayController?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chatViewController.mainViewController = self
         
-        self.viewControllers = [UINavigationController(rootViewController: chatViewController),
-            UINavigationController(rootViewController: contactsViewController)]
+        self.viewControllers = [chatViewController, contactsViewController]
+        //self.viewControllers = [UINavigationController(rootViewController: chatViewController),
+        //    UINavigationController(rootViewController: contactsViewController)]
         
         //UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         let frame = self.view.frame
@@ -41,9 +45,13 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
         session.socketIO!.delegate = self
         session.socketIO!.connect()
         
+        self.hidesBottomBarWhenPushed = true
         self.title = "聊天"
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startChat:", name: StartChatNotification, object: nil)
+        self.searchController = UISearchDisplayController(searchBar: self.chatViewController.searchBar, contentsController: self)
+        
+        self.contactSearchController = UISearchDisplayController(searchBar: self.contactsViewController.searchBar, contentsController: self)
         
     }
     
@@ -54,6 +62,7 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
     func startChat(note: NSNotification) {
         if let userInfo = note.userInfo? {
             if let object: AnyObject = userInfo["user"]? {
+                self.selectedIndex = 0
                 let user = object as User
                 self.chatViewController.startChat(user.name)
                 PersistenceProcessor.sharedInstance.createChatTable(user.name)

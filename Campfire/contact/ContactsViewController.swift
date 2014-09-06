@@ -37,6 +37,21 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
         
         self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        
+        if let layoutGuide = self.topLayoutGuide? {
+            let currentInsets = self.tableView.contentInset
+            let insets = UIEdgeInsetsMake(
+                64,
+                currentInsets.bottom,
+                currentInsets.left,
+                currentInsets.right
+            )
+            self.tableView.contentInset = insets
+            self.tableView.scrollIndicatorInsets = insets
+        }
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
