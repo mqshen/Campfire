@@ -55,6 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func doLogin(sender:UIButton!){
         
+        
         func handler(response: NSDictionary) {
             let session = Session.sharedInstance
             session.userName = response["userName"]! as? String
@@ -76,7 +77,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             ["login" : userName , "password" : password ],
             handler
         )
-        
     }
     
     override func didReceiveMemoryWarning() {

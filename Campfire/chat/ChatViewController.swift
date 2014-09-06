@@ -51,6 +51,8 @@ class ChatViewController: UITableViewController
         self.searchBar?.sizeToFit()
         self.tableView.tableHeaderView = self.searchBar
         
+       
+        
     }
     
     

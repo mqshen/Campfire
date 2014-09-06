@@ -15,6 +15,10 @@ class ImageButton : UIControl {
         super.init(coder: aDecoder)
     }
     
+    var imageView: UIImageView = UIImageView()
+    var textLabel: UILabel = UILabel()
+
+    
     var image: UIImage? = nil
     var activeImage: UIImage?
     var text: String?
@@ -50,16 +54,22 @@ class ImageButton : UIControl {
     
     
     
-    var imageView: UIImageView = UIImageView()
-    var textLabel: UILabel = UILabel()
     
-    init(frame: CGRect, image: UIImage, text: String, textColor: UIColor) {
+    init(frame: CGRect, image: UIImage, text: String, textColor: UIColor, vertical: Bool = true) {
         
-        let height = frame.size.height * 3 / 5;
-        imageView.frame = CGRectMake(0, 5, frame.size.width, height)
+        if vertical {
+            let height = frame.size.height * 3 / 5
+            imageView.frame = CGRectMake(0, 5, frame.size.width, height)
+            textLabel.frame = CGRectMake(0, height, frame.size.width, frame.size.height - height)
+        }
+        else {
+            let height = frame.size.height
+            
+            imageView.frame = CGRectMake(5, 0, image.size.width, height)
+            textLabel.frame = CGRectMake(10 + image.size.width, 0, frame.size.width - image.size.width - 10, height)
+        }
         imageView.contentMode = UIViewContentMode.Center
         
-        textLabel.frame = CGRectMake(0, height, frame.size.width, frame.size.height - height)
         textLabel.textAlignment = NSTextAlignment.Center
         textLabel.backgroundColor = UIColor.clearColor()
         textLabel.font = MAIN_BOTTON_FONT;

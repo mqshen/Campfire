@@ -53,6 +53,14 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
         
         self.contactSearchController = UISearchDisplayController(searchBar: self.contactsViewController.searchBar, contentsController: self)
         
+        
+        
+        let chatButton = UIBarButtonItem(image: UIImage(named: "add@2x.png"),
+            style: UIBarButtonItemStyle.Plain,
+            target: self,
+            action: "showAddChat")
+        
+        self.navigationItem.rightBarButtonItem = chatButton
     }
     
     override func didReceiveMemoryWarning() {
@@ -139,5 +147,19 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
         let searchViewController = SearchViewController()
         searchViewController.delegate = self.navigationController
         self.view.addSubview(searchViewController.view)
+    }
+    
+    func showAddChat() {
+        let imageButton = ImageButton(frame: CGRectMake(15, 10, 120, 40),
+            image: UIImage(named: "tabbar_mainframe@2x.png"), text: "发起群聊", textColor:  UIColor.whiteColor(), vertical: false)
+        imageButton.textLabel.font = UIFont.systemFontOfSize(14)
+        imageButton.addTarget(self, action: "doAddGroupChat", forControlEvents: UIControlEvents.ValueChanged)
+        let view = PopupView(frame: CGRectMake(230, 20, 150, 100))
+        view.addSubview(imageButton)
+        view.popup()
+    }
+    
+    func doAddGroupChat() {
+        println("ss")
     }
 }
