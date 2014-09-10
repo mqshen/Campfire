@@ -8,15 +8,21 @@
 
 import Foundation
 
+enum UserType: Int {
+    case User, Room
+}
+
 class User {
     let name: String
     let nickName: String
     let avatar: String
+    let userType: UserType
     
-    init(name: String, nickName: String, avatar: String) {
+    init(name: String, nickName: String, avatar: String, userType: UserType = UserType.User) {
         self.name = name
         self.nickName = nickName
         self.avatar = avatar
+        self.userType = userType
     }
 }
 
@@ -42,6 +48,12 @@ class Session {
             }
         }
         return nil
+    }
+    
+    
+    func refrestUser() {
+        let users = PersistenceProcessor.sharedInstance.getFriends()
+        self.friends = users
     }
     
 }

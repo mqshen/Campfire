@@ -19,12 +19,10 @@ enum PacketType: Int {
 
 class Packet {
     let type: PacketType
-    let endpoint: String
     let data: String
     
-    init(type: PacketType, endpoint: String = "", data: String = "") {
+    init(type: PacketType, data: String = "") {
         self.type = type
-        self.endpoint = endpoint
         self.data = data
     }
 }
@@ -94,15 +92,22 @@ class SocketIO: WebsocketDelegate
         let message = NSString(data: data, encoding: NSUTF8StringEncoding)
         println(message)
         
-        let array = self.getMatchesFrom(message, regex: "^([^:]+):([0-9]+)?(\\+)?:([^:]+)?:?(.*)?$")
+        //let array = self.getMatchesFrom(message, regex: "^([^:]+):([0-9]+)?(\\+)?:([^:]+)?:?(.*)?$")
+        let array = self.getMatchesFrom(message, regex: "^([^:]+):([0-9]+)?(\\+)?:?(.*)?$")
         let type:Int? = array[1].toInt()
         if let packetType = PacketType.fromRaw(type!)? {
-            let packet = Packet(type: packetType, endpoint: array[4], data: array[5])
+            let packet = Packet(type: packetType, data: array[4])
             if(packet.type == PacketType.Heartbeat) {
                 self.onHeartbeat()
             }
-            else if(packet.type == PacketType.Connect && packet.endpoint == "") {
-                self.onConnect()
+            else if(packet.type == PacketType.Connect ) {
+                if !self.connected {
+                    self.connected = true
+                    self.onConnect()
+                }
+                else {
+                    self.onPacket(packet)
+                }
             }
             else if(packet.type == PacketType.Erro && packet.data == "reconnect") {
                 open = false
@@ -145,12 +150,11 @@ class SocketIO: WebsocketDelegate
     }
     
     func onConnect() {
-        self.sendPacket(Packet(type: PacketType.Connect, endpoint: self.endpoint))
+        self.sendPacket(Packet(type: PacketType.Connect))
     }
     
     func onPacket(packet: Packet) {
         if packet.type == PacketType.Connect {
-            connected = true
             delegate?.socketIODidConnect()
         }
         else {
@@ -160,19 +164,16 @@ class SocketIO: WebsocketDelegate
     
     func sendPacket(packet: Packet) {
         var message: String
-        if packet.endpoint == "" {
-            message = "\(packet.type.toRaw())::"
-        }
-        else if packet.data == "" {
-            message = "\(packet.type.toRaw())::/\(packet.endpoint)"
+        if packet.data == "" {
+            message = "\(packet.type.toRaw()):"
         }
         else {
-            message = "\(packet.type.toRaw())::/\(packet.endpoint):\(packet.data)"
+            message = "\(packet.type.toRaw())::\(packet.data)"
         }
         webSocket?.writeString(message)
     }
     
     func sendEvent(message: String) {
-        self.sendPacket(Packet(type: PacketType.Event, endpoint: self.endpoint, data: message))
+        self.sendPacket(Packet(type: PacketType.Event, data: message))
     }
 }

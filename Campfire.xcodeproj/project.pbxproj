@@ -33,6 +33,8 @@
 		F159C84319A4A3EA00058487 /* MessagesComposerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C84219A4A3EA00058487 /* MessagesComposerTextView.swift */; };
 		F16B39731994A7C0009E9AF0 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B39721994A7C0009E9AF0 /* util.swift */; };
 		F16B39761994B78F009E9AF0 /* HttpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B39751994B78F009E9AF0 /* HttpConnection.swift */; };
+		F16FBF1819BBE89000826C8B /* UserSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16FBF1719BBE89000826C8B /* UserSelectViewController.swift */; };
+		F16FBF1A19BBE8CC00826C8B /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16FBF1919BBE8CC00826C8B /* Checkbox.swift */; };
 		F17F876419949D9900CB43CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F876319949D9900CB43CC /* AppDelegate.swift */; };
 		F17F876619949D9900CB43CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F876519949D9900CB43CC /* ViewController.swift */; };
 		F17F876919949D9900CB43CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17F876719949D9900CB43CC /* Main.storyboard */; };
@@ -53,6 +55,7 @@
 		F19AE2DE1998A4EA00C72FD5 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AE2DD1998A4EA00C72FD5 /* ImageButton.swift */; };
 		F19AE2E01998BEC600C72FD5 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AE2DF1998BEC600C72FD5 /* TabView.swift */; };
 		F1A210AF199A515800B4663F /* HttpFileUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A210AE199A515800B4663F /* HttpFileUpload.swift */; };
+		F1A87C9819C0754C00A3BD3E /* room@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A87C9719C0754C00A3BD3E /* room@2x.png */; };
 		F1B891BB19BAD08900108FF6 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B891BA19BAD08900108FF6 /* PopupView.swift */; };
 		F1B891BD19BB616700108FF6 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1B891BC19BB616700108FF6 /* add@2x.png */; };
 		F1BC415219B8239800075454 /* ChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC415119B8239800075454 /* ChatViewCell.swift */; };
@@ -96,6 +99,8 @@
 		F159C84219A4A3EA00058487 /* MessagesComposerTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesComposerTextView.swift; sourceTree = "<group>"; };
 		F16B39721994A7C0009E9AF0 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		F16B39751994B78F009E9AF0 /* HttpConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpConnection.swift; sourceTree = "<group>"; };
+		F16FBF1719BBE89000826C8B /* UserSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectViewController.swift; sourceTree = "<group>"; };
+		F16FBF1919BBE8CC00826C8B /* Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		F17F875E19949D9900CB43CC /* Campfire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Campfire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17F876219949D9900CB43CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F17F876319949D9900CB43CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		F19AE2DF1998BEC600C72FD5 /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		F19CBA26199A649D00EA2737 /* Campfire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Campfire-Bridging-Header.h"; sourceTree = "<group>"; };
 		F1A210AE199A515800B4663F /* HttpFileUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpFileUpload.swift; sourceTree = "<group>"; };
+		F1A87C9719C0754C00A3BD3E /* room@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "room@2x.png"; sourceTree = "<group>"; };
 		F1B891BA19BAD08900108FF6 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		F1B891BC19BB616700108FF6 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
 		F1BC415119B8239800075454 /* ChatViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 				F1560F0419A6329E00101C68 /* util.swift */,
 				F1BC415119B8239800075454 /* ChatViewCell.swift */,
 				F134760C19B845B000670200 /* MessageTextView.swift */,
+				F16FBF1719BBE89000826C8B /* UserSelectViewController.swift */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -318,6 +325,7 @@
 				F19AE2DD1998A4EA00C72FD5 /* ImageButton.swift */,
 				F19AE2DF1998BEC600C72FD5 /* TabView.swift */,
 				F1B891BA19BAD08900108FF6 /* PopupView.swift */,
+				F16FBF1919BBE8CC00826C8B /* Checkbox.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -325,6 +333,7 @@
 		F19AE2D01998A40100C72FD5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				F1A87C9719C0754C00A3BD3E /* room@2x.png */,
 				F1B891BC19BB616700108FF6 /* add@2x.png */,
 				F19AE2D11998A40100C72FD5 /* tabbar_contacts@2x.png */,
 				F19AE2D21998A40100C72FD5 /* tabbar_contactsHL@2x.png */,
@@ -429,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F19AE2DC1998A40100C72FD5 /* tabbar_meHL@2x.png in Resources */,
+				F1A87C9819C0754C00A3BD3E /* room@2x.png in Resources */,
 				F17F876919949D9900CB43CC /* Main.storyboard in Resources */,
 				F1560F0A19A63F3500101C68 /* bubble_min.png in Resources */,
 				F19AE2D91998A40100C72FD5 /* tabbar_mainframe@2x.png in Resources */,
@@ -464,6 +474,8 @@
 				F17F876619949D9900CB43CC /* ViewController.swift in Sources */,
 				F136C1C5199A1B9B001F6A26 /* Websocket.swift in Sources */,
 				F19AE2E01998BEC600C72FD5 /* TabView.swift in Sources */,
+				F16FBF1A19BBE8CC00826C8B /* Checkbox.swift in Sources */,
+				F16FBF1819BBE89000826C8B /* UserSelectViewController.swift in Sources */,
 				F1BC415219B8239800075454 /* ChatViewCell.swift in Sources */,
 				F1B891BB19BAD08900108FF6 /* PopupView.swift in Sources */,
 				F1560F0519A6329E00101C68 /* util.swift in Sources */,

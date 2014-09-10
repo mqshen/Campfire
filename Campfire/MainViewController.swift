@@ -12,7 +12,7 @@ import UIKit
 
 let StartChatNotification = "StartChatNotification"
 
-class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODelegate{
+class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODelegate, UITabBarControllerDelegate {
     
     //var socketIO: SocketIO?
     let chatViewController: ChatViewController = ChatViewController()
@@ -22,16 +22,15 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
     var searchController: UISearchDisplayController?
     var contactSearchController: UISearchDisplayController?
     
+    var toolView: PopupView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         chatViewController.mainViewController = self
         
         self.viewControllers = [chatViewController, contactsViewController]
-        //self.viewControllers = [UINavigationController(rootViewController: chatViewController),
-        //    UINavigationController(rootViewController: contactsViewController)]
         
-        //UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         let frame = self.view.frame
         
         self.view.backgroundColor = UIColor.whiteColor()
@@ -51,9 +50,8 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startChat:", name: StartChatNotification, object: nil)
         self.searchController = UISearchDisplayController(searchBar: self.chatViewController.searchBar, contentsController: self)
         
-        self.contactSearchController = UISearchDisplayController(searchBar: self.contactsViewController.searchBar, contentsController: self)
         
-        
+        self.navigationController?.navigationBar?.translucent = false
         
         let chatButton = UIBarButtonItem(image: UIImage(named: "add@2x.png"),
             style: UIBarButtonItemStyle.Plain,
@@ -61,6 +59,8 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
             action: "showAddChat")
         
         self.navigationItem.rightBarButtonItem = chatButton
+        
+        self.tabBar.translucent = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -124,12 +124,33 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
                             }
                         }
                     }
-                    let users = PersistenceProcessor.sharedInstance.getFriends()
                     PersistenceProcessor.sharedInstance.updateSyncKey(lastSyncKey)
                     
-                    Session.sharedInstance.friends = users
+                    Session.sharedInstance.refrestUser()
+                    
                     self.chatViewController.refresh()
                     
+                }
+                else if name == "room" {
+                    let content = responseDic["content"]
+                    let roomName = content["name"].string
+                    if roomName == nil {
+                        return
+                    }
+                    var usersString = NSMutableString()
+                    if let users = content["users"].array? {
+                        for userName in users {
+                            usersString.appendString(userName.string!)
+                            usersString.appendString("、")
+                        }
+                        usersString.deleteCharactersInRange(NSRange(location:usersString.length - 1 ,length: 1))
+                    }
+                    let user = User(name: roomName!, nickName: usersString, avatar: "", userType: UserType.Room)
+                    PersistenceProcessor.sharedInstance.addFriend(user)
+                    PersistenceProcessor.sharedInstance.createChatTable(roomName!)
+                    Session.sharedInstance.friends.append(user)
+                    
+                    self.chatViewController.startChat(roomName!)
                 }
 
             }
@@ -153,13 +174,26 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
         let imageButton = ImageButton(frame: CGRectMake(15, 10, 120, 40),
             image: UIImage(named: "tabbar_mainframe@2x.png"), text: "发起群聊", textColor:  UIColor.whiteColor(), vertical: false)
         imageButton.textLabel.font = UIFont.systemFontOfSize(14)
-        imageButton.addTarget(self, action: "doAddGroupChat", forControlEvents: UIControlEvents.ValueChanged)
-        let view = PopupView(frame: CGRectMake(230, 20, 150, 100))
-        view.addSubview(imageButton)
-        view.popup()
+        imageButton.addTarget(self, action: "doAddGroupChat", forControlEvents:UIControlEvents.ValueChanged)
+        self.toolView = PopupView(frame: CGRectMake(230, 20, 150, 100))
+        self.toolView?.addSubview(imageButton)
+        self.toolView?.popup()
     }
     
     func doAddGroupChat() {
-        println("ss")
+        self.toolView?.hide()
+        
+        let vc = UserSelectViewController()
+        let navVC = UINavigationController(rootViewController: vc)
+        self.presentViewController(navVC, animated: true, completion: nil)
     }
+    
+    func tabBarController(tabBarController: UITabBarController!, didSelectViewController viewController: UIViewController!) {
+        if viewController == self.contactsViewController {
+            if self.contactSearchController == nil {
+                self.contactSearchController = UISearchDisplayController(searchBar: self.contactsViewController.searchBar, contentsController: self)
+            }
+        }
+    }
+    
 }

@@ -42,7 +42,6 @@ class ChatViewController: UITableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -50,11 +49,13 @@ class ChatViewController: UITableViewController
         self.searchBar = UISearchBar()
         self.searchBar?.sizeToFit()
         self.tableView.tableHeaderView = self.searchBar
-        
-       
-        
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+        self.navigationController.navigationBar.translucent = false
+    }
     
     func refresh() {
         chats = PersistenceProcessor.sharedInstance.getRecentChats()
@@ -73,7 +74,12 @@ class ChatViewController: UITableViewController
         }
         let userName = self.chats[indexPath.row].0
         if let user = Session.sharedInstance.getUser(userName)? {
-            cell?.setAvatar(user.avatar)
+            if user.userType == UserType.User {
+                cell?.setAvatar(user.avatar)
+            }
+            else {
+                cell?.swImageView.image = UIImage(named: "room@2x.png")
+            }
             cell?.textLabel.text = user.nickName
             
             let message = self.chats[indexPath.row].1

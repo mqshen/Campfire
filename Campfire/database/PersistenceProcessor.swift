@@ -21,7 +21,7 @@ class PersistenceProcessor
     let database: SQLiteDB
     init() {
         database = SQLiteDB(name: "campfire") { (db: COpaquePointer) -> Void in
-            let sql_stmt = "CREATE TABLE IF NOT EXISTS FRIEND (UserName TEXT PRIMARY KEY, NickName TEXT, Avatar TEXT)"
+            let sql_stmt = "CREATE TABLE IF NOT EXISTS FRIEND (UserName TEXT PRIMARY KEY, NickName TEXT, Avatar TEXT, Type INTEGER)"
             if sqlite3_exec(db, sql_stmt, nil, nil, nil) != SQLITE_OK {
                 println("create table success")
             }
@@ -37,7 +37,7 @@ class PersistenceProcessor
     }
     
     func addFriend(friend: User) {
-        database.execute("INSERT INTO FRIEND(UserName, NickName, Avatar) VALUES ('\(friend.name)',  '\(friend.nickName)', '\(friend.avatar)')")
+        database.execute("INSERT INTO FRIEND(UserName, NickName, Avatar, Type) VALUES ('\(friend.name)',  '\(friend.nickName)', '\(friend.avatar)', '\(friend.userType.toRaw())' )")
     }
     
     func deleteFriend(friend: User) {
@@ -45,14 +45,15 @@ class PersistenceProcessor
     }
     
     func getFriends() -> Array<User> {
-        let data = database.query("SELECT UserName, NickName, Avatar FROM FRIEND")
+        let data = database.query("SELECT UserName, NickName, Avatar, Type FROM FRIEND")
         
         var users = [User]()
         for row in data {
             let userName = row["UserName"]?.asString()
             let nickName = row["NickName"]?.asString()
             let avatar = row["Avatar"]?.asString()
-            users.append( User(name: userName!, nickName: nickName!, avatar: avatar!))
+            let userType = row["Type"]?.asInt()
+            users.append( User(name: userName!, nickName: nickName!, avatar: avatar!, userType: UserType.fromRaw(userType!)!))
         }
         return users
     }
@@ -72,15 +73,15 @@ class PersistenceProcessor
     }
     
     func createChatTable(userName: String) {
-        database.execute("CREATE TABLE IF NOT EXISTS Chat_\(userName) (Id INTEGER PRIMARY KEY AUTOINCREMENT, ServerId INTEGER, CreateTime INTEGER, Message TEXT, Status INTEGER)")
+        database.execute("CREATE TABLE IF NOT EXISTS 'Chat_\(userName)' (Id INTEGER PRIMARY KEY AUTOINCREMENT, ServerId INTEGER, CreateTime INTEGER, Message TEXT, Status INTEGER)")
     }
     
     func addMessage(message: Message) {
-        database.execute("INSERT INTO Chat_\(message.fromUserName) (ServerId, CreateTime, Message, Status) VALUES ('\(message.clientMsgId)', '\(message.createTime)', '\(message.content)', '4')")
+        database.execute("INSERT INTO 'Chat_\(message.fromUserName)' (ServerId, CreateTime, Message, Status) VALUES ('\(message.clientMsgId)', '\(message.createTime)', '\(message.content)', '4')")
     }
     
     func sendMessage(message: Message) {
-        database.execute("INSERT INTO Chat_\(message.toUserName) (ServerId, CreateTime, Message, Status) VALUES ('\(message.clientMsgId)', '\(message.createTime)', '\(message.content)', '2')")
+        database.execute("INSERT INTO 'Chat_\(message.toUserName)' (ServerId, CreateTime, Message, Status) VALUES ('\(message.clientMsgId)', '\(message.createTime)', '\(message.content)', '2')")
     }
     
     func getRecentChats() -> Array<(String, Message)> {
@@ -90,7 +91,7 @@ class PersistenceProcessor
         for row in data {
             if let name = row["name"]?.asString() {
                 let userName = name.subStringFrom(5)
-                let data = database.query("SELECT ServerId, CreateTime, Message, Status FROM \(name) ORDER BY Id DESC LIMIT 1")
+                let data = database.query("SELECT ServerId, CreateTime, Message, Status FROM '\(name)' ORDER BY Id DESC LIMIT 1")
                 if let row = data.first? {
                     let serverId = row["ServerId"]?.asInt()
                     let createTime = row["CreateTime"]?.asInt()
@@ -106,7 +107,7 @@ class PersistenceProcessor
     
     func getRecentMessages(userName: String, page: Int, size: Int = 20) -> Array<Message> {
         let skip = page * size
-        let data = database.query("SELECT ServerId, CreateTime, Message, Status FROM Chat_\(userName) ORDER BY Id DESC LIMIT \(skip), \(size)")
+        let data = database.query("SELECT ServerId, CreateTime, Message, Status FROM 'Chat_\(userName)' ORDER BY Id DESC LIMIT \(skip), \(size)")
         var messages = [Message]()
         for row in data {
             let serverId = row["ServerId"]?.asInt()

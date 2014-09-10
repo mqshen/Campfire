@@ -37,21 +37,22 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
         
         self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         
-        self.automaticallyAdjustsScrollViewInsets = false
+        //self.automaticallyAdjustsScrollViewInsets = false
         
         
-        if let layoutGuide = self.topLayoutGuide? {
-            let currentInsets = self.tableView.contentInset
-            let insets = UIEdgeInsetsMake(
-                64,
-                currentInsets.bottom,
-                currentInsets.left,
-                currentInsets.right
-            )
-            self.tableView.contentInset = insets
-            self.tableView.scrollIndicatorInsets = insets
-        }
-        
+        self.navigationController.navigationBar.translucent = false
+//        if let layoutGuide = self.topLayoutGuide? {
+//            let currentInsets = self.tableView.contentInset
+//            let insets = UIEdgeInsetsMake(
+//                64,
+//                currentInsets.bottom,
+//                currentInsets.left,
+//                currentInsets.right
+//            )
+//            self.tableView.contentInset = insets
+//            self.tableView.scrollIndicatorInsets = insets
+//        }
+//
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -76,10 +77,15 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
             cell = ContactViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "neighborCell")
             //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        let avatarUrl = Session.sharedInstance.friends[indexPath.row].avatar
-        cell?.setAvatar(avatarUrl)
+        let user = Session.sharedInstance.friends[indexPath.row]
+        if user.userType == UserType.User {
+            cell?.setAvatar(user.avatar)
+        }
+        else {
+            cell?.swImageView.image = UIImage(named: "room@2x.png")
+        }
         
-        cell?.textLabel.text = Session.sharedInstance.friends[indexPath.row].nickName
+        cell?.textLabel.text = user.nickName
         return cell;
     }
     
