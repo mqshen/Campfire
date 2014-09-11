@@ -15,7 +15,7 @@ class TouchPeekView: UIView
 {
     var delegate: PopupView?
     
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if let view = self.delegate? {
             view.hide()
         }

@@ -35,12 +35,12 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         
         //self.automaticallyAdjustsScrollViewInsets = false
         
         
-        self.navigationController.navigationBar.translucent = false
+        self.navigationController?.navigationBar.translucent = false
 //        if let layoutGuide = self.topLayoutGuide? {
 //            let currentInsets = self.tableView.contentInset
 //            let insets = UIEdgeInsetsMake(
@@ -67,11 +67,11 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
         self.tableView.reloadData()
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Session.sharedInstance.friends.count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: ContactViewCell? = tableView.dequeueReusableCellWithIdentifier( "neighborCell" ) as? ContactViewCell
         if (cell == nil) {
             cell = ContactViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "neighborCell")
@@ -85,15 +85,15 @@ class ContactsViewController: UITableViewController, UITableViewDataSource, UITa
             cell?.swImageView.image = UIImage(named: "room@2x.png")
         }
         
-        cell?.textLabel.text = user.nickName
-        return cell;
+        cell?.textLabel?.text = user.nickName
+        return cell!
     }
     
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 55
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var user = Session.sharedInstance.friends[indexPath.row]
         NSNotificationCenter.defaultCenter().postNotificationName(StartChatNotification, object: nil, userInfo: ["user":user])
     }

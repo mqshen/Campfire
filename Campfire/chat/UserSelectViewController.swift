@@ -53,7 +53,7 @@ class ContactSelectViewCell: UITableViewCell
         
         
         self.swImageView.frame = CGRectMake(20 + checkboxSize, 10, 35, 35)
-        self.textLabel.frame = CGRectMake(63 + checkboxSize, 0, 200, frame.size.height)
+        self.textLabel?.frame = CGRectMake(63 + checkboxSize, 0, 200, frame.size.height)
     }
 }
 
@@ -88,22 +88,22 @@ class UserSelectViewController: UITableViewController, UITableViewDataSource, UI
         
         self.friends = Session.sharedInstance.friends.filter({ $0.userType != UserType.Room })
         
-        self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         
-        self.automaticallyAdjustsScrollViewInsets = false
+//        self.automaticallyAdjustsScrollViewInsets = false
         
         
-        if let layoutGuide = self.topLayoutGuide? {
-            let currentInsets = self.tableView.contentInset
-            let insets = UIEdgeInsetsMake(
-                64,
-                currentInsets.bottom,
-                currentInsets.left,
-                currentInsets.right
-            )
-            self.tableView.contentInset = insets
-            self.tableView.scrollIndicatorInsets = insets
-        }
+//        if let layoutGuide = self.topLayoutGuide {
+//            let currentInsets = self.tableView.contentInset
+//            let insets = UIEdgeInsetsMake(
+//                64,
+//                currentInsets.bottom,
+//                currentInsets.left,
+//                currentInsets.right
+//            )
+//            self.tableView.contentInset = insets
+//            self.tableView.scrollIndicatorInsets = insets
+//        }
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -137,11 +137,11 @@ class UserSelectViewController: UITableViewController, UITableViewDataSource, UI
         self.dismissViewControllerAnimated(false, completion: nil)
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.friends.count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: ContactSelectViewCell? = tableView.dequeueReusableCellWithIdentifier( "userCell" ) as? ContactSelectViewCell
         if (cell == nil) {
             cell = ContactSelectViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "userCell")
@@ -150,15 +150,15 @@ class UserSelectViewController: UITableViewController, UITableViewDataSource, UI
         let avatarUrl = self.friends[indexPath.row].avatar
         cell?.setAvatar(avatarUrl)
         
-        cell?.textLabel.text = self.friends[indexPath.row].nickName
-        return cell;
+        cell?.textLabel?.text = self.friends[indexPath.row].nickName
+        return cell!;
     }
     
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 55
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell: ContactSelectViewCell? = tableView.cellForRowAtIndexPath(indexPath) as? ContactSelectViewCell
         cell!.checkbox.checked = !cell!.checkbox.checked
         let user = Session.sharedInstance.friends[indexPath.row]
@@ -169,10 +169,10 @@ class UserSelectViewController: UITableViewController, UITableViewDataSource, UI
             self.users = self.users.filter({$0 != user.name })
         }
         if self.users.count == 0 {
-            self.navigationItem.rightBarButtonItem.enabled = false
+            self.navigationItem.rightBarButtonItem?.enabled = false
         }
         else {
-            self.navigationItem.rightBarButtonItem.enabled = true
+            self.navigationItem.rightBarButtonItem?.enabled = true
         }
     }
 }

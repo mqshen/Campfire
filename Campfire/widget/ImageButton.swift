@@ -43,7 +43,7 @@ class ImageButton : UIControl {
                     }
                 }
                 else {
-                    textLabel.textColor = textColor
+                    textLabel.textColor = textColor!
                     imageView.image = image
                 }
                 self.check = newValue
@@ -87,24 +87,24 @@ class ImageButton : UIControl {
         self.addSubview(textLabel)
     }
     
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if (autoBounce) {
             self.select = true
         }
     }
     
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         
     }
     
-    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         if (autoBounce) {
             self.select = false
         }
         if (self.select && !autoBounce) {
             return
         }
-        if touches.anyObject().tapCount == 1 {
+        if touches.anyObject()?.tapCount == 1 {
             self.select = !self.select
             self.sendActionsForControlEvents(UIControlEvents.ValueChanged)
         }
@@ -113,7 +113,7 @@ class ImageButton : UIControl {
     override func sendActionsForControlEvents(controlEvents: UIControlEvents) {
         for target in self.allTargets() {
             let actionForTarget = self.actionsForTarget(target, forControlEvent: controlEvents)
-            for action in actionForTarget {
+            for action in actionForTarget! {
                 let selector = NSSelectorFromString(action as String)
                 self.sendAction(selector, to: target, forEvent: nil)
             }

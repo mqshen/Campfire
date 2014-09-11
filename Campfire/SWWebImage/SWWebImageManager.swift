@@ -163,7 +163,7 @@ public class SWImageCache
                     var currentCacheSize: UInt = 0
                     var urlsToDelete = [NSURL]()
                 
-                    for fileURL in fileEnumerator.allObjects {
+                    for fileURL in fileEnumerator!.allObjects {
                         if let fileURL = fileURL as? NSURL {
                             if var resourceValues = fileURL.resourceValuesForKeys(resourceKeys, error: nil)? {
                                 let isDir = (resourceValues[NSURLIsDirectoryKey] as NSNumber).boolValue
@@ -271,9 +271,9 @@ public class SWImageCache
     
     
     func scaledImage(key: String, image: UIImage!) -> UIImage {
-        if image.images != nil && image.images.count > 0 {
+        if image.images != nil && image.images?.count > 0 {
             var scaledImages = [UIImage]()
-            for tempImage in image.images {
+            for tempImage in image.images! {
                 scaledImages.append(self.scaledImage(key, image: tempImage as? UIImage))
             }
             return UIImage.animatedImageWithImages(scaledImages, duration: image.duration)
@@ -362,7 +362,7 @@ public class SWImageCache
             dispatch_sync(self.ioQueue, {
                 if fileManager.fileExistsAtPath(self.diskCachePath) {
                     let fileEnumerator = fileManager.enumeratorAtPath(self.diskCachePath)
-                    for fileName in fileEnumerator.allObjects {
+                    for fileName in fileEnumerator!.allObjects {
                         let filePath = self.diskCachePath.stringByAppendingPathComponent(fileName as String)
                         if let attrs = NSFileManager.defaultManager().attributesOfItemAtPath(filePath, error: nil) {
                             let fileSize: AnyObject? = attrs[NSFileSize]

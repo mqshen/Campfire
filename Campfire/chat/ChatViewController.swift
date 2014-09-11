@@ -53,8 +53,8 @@ class ChatViewController: UITableViewController
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.navigationController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
-        self.navigationController.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+        self.navigationController?.navigationBar.translucent = false
     }
     
     func refresh() {
@@ -62,11 +62,11 @@ class ChatViewController: UITableViewController
         self.tableView.reloadData()
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.chats.count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: ChatViewCell? = tableView.dequeueReusableCellWithIdentifier( "neighborCell" ) as? ChatViewCell
         if (cell == nil) {
             cell = ChatViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "neighborCell")
@@ -80,7 +80,7 @@ class ChatViewController: UITableViewController
             else {
                 cell?.swImageView.image = UIImage(named: "room@2x.png")
             }
-            cell?.textLabel.text = user.nickName
+            cell?.textLabel?.text = user.nickName
             
             let message = self.chats[indexPath.row].1
             cell?.recentLabel.text = message.content
@@ -88,10 +88,11 @@ class ChatViewController: UITableViewController
             cell?.timeLabel.text = createTime.timeAgo()
         }
         
-        return cell
+        return cell!
     }
     
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 55
     }
     
@@ -129,7 +130,7 @@ class ChatViewController: UITableViewController
         }
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let userName = self.chats[indexPath.row].0
         self.pushViewController(userName)

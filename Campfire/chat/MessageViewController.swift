@@ -38,7 +38,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         if let u = user? {
             self.title = u.nickName
@@ -53,7 +53,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.collectionView?.backgroundColor = UIColorFromRGB(0xE5E5E5)
         self.view.addSubview(self.collectionView!)
         
-        let left = NSLayoutConstraint(item: self.collectionView,
+        let left = NSLayoutConstraint(item: self.collectionView!,
             attribute: NSLayoutAttribute.Leading,
             relatedBy: NSLayoutRelation.Equal,
             toItem: self.view,
@@ -62,7 +62,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
             constant: 0)
         self.view.addConstraint(left)
         
-        let right = NSLayoutConstraint(item: self.collectionView,
+        let right = NSLayoutConstraint(item: self.collectionView!,
             attribute: NSLayoutAttribute.Trailing,
             relatedBy: NSLayoutRelation.Equal,
             toItem: self.view,
@@ -72,7 +72,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.view.addConstraint(right)
         
         
-        let top = NSLayoutConstraint(item: self.collectionView,
+        let top = NSLayoutConstraint(item: self.collectionView!,
             attribute: NSLayoutAttribute.Top,
             relatedBy: NSLayoutRelation.Equal,
             toItem: self.view,
@@ -82,7 +82,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.view.addConstraint(top)
         
         
-        let bottom = NSLayoutConstraint(item: self.collectionView,
+        let bottom = NSLayoutConstraint(item: self.collectionView!,
             attribute: NSLayoutAttribute.Bottom,
             relatedBy: NSLayoutRelation.Equal,
             toItem: self.view,
@@ -123,7 +123,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
             delegate: self)
         
         
-        let toolbarLeft = NSLayoutConstraint(item: self.inputToolbar,
+        let toolbarLeft = NSLayoutConstraint(item: self.inputToolbar!,
             attribute: NSLayoutAttribute.Leading,
             relatedBy: NSLayoutRelation.Equal,
             toItem: self.view,
@@ -133,7 +133,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.view.addConstraint(toolbarLeft)
         
         
-        let toolbarRight = NSLayoutConstraint(item: self.inputToolbar,
+        let toolbarRight = NSLayoutConstraint(item: self.inputToolbar!,
             attribute: NSLayoutAttribute.Trailing,
             relatedBy: NSLayoutRelation.Equal,
             toItem: self.view,
@@ -142,7 +142,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
             constant: 0)
         self.view.addConstraint(toolbarRight)
         
-        self.toolbarHeightConstraint = NSLayoutConstraint(item: self.inputToolbar,
+        self.toolbarHeightConstraint = NSLayoutConstraint(item: self.inputToolbar!,
             attribute: NSLayoutAttribute.Height,
             relatedBy: NSLayoutRelation.Equal,
             toItem: nil,
@@ -157,11 +157,11 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     
-    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
     
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
         
         var height:CGFloat = 20
         let message = self.messages[indexPath.row]
@@ -180,7 +180,7 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
         return CGSizeMake(320, height)
     }
     
-    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let message = self.messages[indexPath.row]
         let myName = Session.sharedInstance.userName
         let cellIdentify = myName! == message.fromUserName ? OutgoingMessage : IncomingMessage

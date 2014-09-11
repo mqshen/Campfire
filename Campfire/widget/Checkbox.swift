@@ -70,8 +70,9 @@ class Checkbox : UIControl
         }
     }
     
-    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
-        if touches.anyObject().tapCount == 1 {
+
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        if touches.anyObject()?.tapCount == 1 {
             self.checked = !self.checked
             self.sendActionsForControlEvents(UIControlEvents.ValueChanged, event: event)
         }
@@ -80,7 +81,7 @@ class Checkbox : UIControl
     func sendActionsForControlEvents(controlEvents: UIControlEvents, event: UIEvent) {
         for target in self.allTargets() {
             let actionsForTarget = self.actionsForTarget(target, forControlEvent: controlEvents)
-            for action in actionsForTarget {
+            for action in actionsForTarget! {
                 let selector = NSSelectorFromString(action as String)
                 self.sendAction(selector, to: target, forEvent: event)
             }

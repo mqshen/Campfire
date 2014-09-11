@@ -39,8 +39,8 @@ class ChatViewCell: UITableViewCell
         
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.textLabel.textColor = UIColor.blackColor()
-        self.textLabel.font = UIFont.systemFontOfSize(15)
+        self.textLabel?.textColor = UIColor.blackColor()
+        self.textLabel?.font = UIFont.systemFontOfSize(15)
         self.addSubview(swImageView)
         self.addSubview(recentLabel)
         self.addSubview(timeLabel)
@@ -53,7 +53,7 @@ class ChatViewCell: UITableViewCell
     override func layoutSubviews() {
         super.layoutSubviews()
         let frame = self.frame
-        self.textLabel.frame = CGRectMake(60, 3, 200, 18)
+        self.textLabel?.frame = CGRectMake(60, 3, 200, 18)
         self.swImageView.frame = CGRectMake(10, 5, 45, 45)
     }
 }

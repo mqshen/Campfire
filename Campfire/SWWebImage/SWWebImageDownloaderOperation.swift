@@ -338,9 +338,9 @@ class SWWebImageDownloaderOperation : NSOperation, SWWebImageOperation, NSURLCon
     }
     
     func scaledImage(key: String, image: UIImage!) -> UIImage {
-        if image.images != nil && image.images.count > 0 {
+        if image.images != nil && image.images!.count > 0 {
             var scaledImages = [UIImage]()
-            for tempImage in image.images {
+            for tempImage in image.images! {
                 scaledImages.append(self.scaledImage(key, image: tempImage as? UIImage))
             }
             return UIImage.animatedImageWithImages(scaledImages, duration: image.duration)

@@ -85,7 +85,7 @@ class MessageKeyboardController: NSObject
     
     
     func didReceiveKeyboardDidShowNotification(notification: NSNotification) {
-        self.keyboardView = self.textView.inputAccessoryView.superview
+        self.keyboardView = self.textView.inputAccessoryView?.superview
         self.setKeyboardViewHidden(false)
         
         self.handleKeyboardNotification(notification, completion: { (finished: Bool) -> Void in

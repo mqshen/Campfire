@@ -51,7 +51,7 @@ class MainViewController: UITabBarController, UITextFieldDelegate, SocketIODeleg
         self.searchController = UISearchDisplayController(searchBar: self.chatViewController.searchBar, contentsController: self)
         
         
-        self.navigationController?.navigationBar?.translucent = false
+        self.navigationController?.navigationBar.translucent = false
         
         let chatButton = UIBarButtonItem(image: UIImage(named: "add@2x.png"),
             style: UIBarButtonItemStyle.Plain,

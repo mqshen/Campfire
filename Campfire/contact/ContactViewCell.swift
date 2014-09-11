@@ -32,7 +32,7 @@ class ContactViewCell: UITableViewCell
     override func layoutSubviews() {
         super.layoutSubviews()
         let frame = self.frame
-        self.textLabel.frame = CGRectMake(53, 0, 200, frame.size.height)
+        self.textLabel?.frame = CGRectMake(53, 0, 200, frame.size.height)
         self.swImageView.frame = CGRectMake(10, 10, 35, 35)
     }
 }
