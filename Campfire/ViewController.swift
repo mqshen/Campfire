@@ -74,7 +74,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let password = passwordField.text
         sendAsyncHttpRequest("session",
             "post",
-            ["login" : userName , "password" : password ],
+            ["userName" : userName , "password" : password ],
             handler
         )
     }

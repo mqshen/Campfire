@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F12C11D719D985D000DA829D /* micro_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12C11D619D985D000DA829D /* micro_small@2x.png */; };
 		F134760B19B82E2000670200 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F134760A19B82E2000670200 /* NSDate.swift */; };
 		F134760D19B845B000670200 /* MessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F134760C19B845B000670200 /* MessageTextView.swift */; };
 		F136C1C11999B13D001F6A26 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C1C01999B13D001F6A26 /* ChatViewController.swift */; };
@@ -20,12 +21,6 @@
 		F1560F0519A6329E00101C68 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1560F0419A6329E00101C68 /* util.swift */; };
 		F1560F0A19A63F3500101C68 /* bubble_min.png in Resources */ = {isa = PBXBuildFile; fileRef = F1560F0819A63F3500101C68 /* bubble_min.png */; };
 		F1560F0B19A63F3500101C68 /* bubble_min@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1560F0919A63F3500101C68 /* bubble_min@2x.png */; };
-		F159C83219A4771300058487 /* SWWebImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82C19A4771300058487 /* SWWebImageDownloader.swift */; };
-		F159C83319A4771300058487 /* SWWebImageDownloaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82D19A4771300058487 /* SWWebImageDownloaderOperation.swift */; };
-		F159C83419A4771300058487 /* SWWebImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82E19A4771300058487 /* SWWebImageManager.swift */; };
-		F159C83519A4771300058487 /* SWWebImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C82F19A4771300058487 /* SWWebImageUtil.swift */; };
-		F159C83619A4771300058487 /* SWWebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83019A4771300058487 /* SWWebImageView.swift */; };
-		F159C83719A4771300058487 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83119A4771300058487 /* util.swift */; };
 		F159C83919A47F3000058487 /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83819A47F3000058487 /* ContactViewCell.swift */; };
 		F159C83B19A49C1000058487 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83A19A49C1000058487 /* MessageViewController.swift */; };
 		F159C83D19A49C7400058487 /* MessgeCollectionView .swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C83C19A49C7400058487 /* MessgeCollectionView .swift */; };
@@ -59,6 +54,7 @@
 		F1B891BB19BAD08900108FF6 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B891BA19BAD08900108FF6 /* PopupView.swift */; };
 		F1B891BD19BB616700108FF6 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1B891BC19BB616700108FF6 /* add@2x.png */; };
 		F1BC415219B8239800075454 /* ChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC415119B8239800075454 /* ChatViewCell.swift */; };
+		F1FFCE9719DA5823003068EB /* SWWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FFCE9619DA5823003068EB /* SWWebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +68,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F12C11D619D985D000DA829D /* micro_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "micro_small@2x.png"; sourceTree = "<group>"; };
+		F12C11D819D9A07D00DA829D /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		F134760A19B82E2000670200 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		F134760C19B845B000670200 /* MessageTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTextView.swift; sourceTree = "<group>"; };
 		F136C1C01999B13D001F6A26 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -86,12 +84,6 @@
 		F1560F0619A63C5F00101C68 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F1560F0819A63F3500101C68 /* bubble_min.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_min.png; sourceTree = "<group>"; };
 		F1560F0919A63F3500101C68 /* bubble_min@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_min@2x.png"; sourceTree = "<group>"; };
-		F159C82C19A4771300058487 /* SWWebImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageDownloader.swift; sourceTree = "<group>"; };
-		F159C82D19A4771300058487 /* SWWebImageDownloaderOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageDownloaderOperation.swift; sourceTree = "<group>"; };
-		F159C82E19A4771300058487 /* SWWebImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageManager.swift; sourceTree = "<group>"; };
-		F159C82F19A4771300058487 /* SWWebImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageUtil.swift; sourceTree = "<group>"; };
-		F159C83019A4771300058487 /* SWWebImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWWebImageView.swift; sourceTree = "<group>"; };
-		F159C83119A4771300058487 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		F159C83819A47F3000058487 /* ContactViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		F159C83A19A49C1000058487 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		F159C83C19A49C7400058487 /* MessgeCollectionView .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessgeCollectionView .swift"; sourceTree = "<group>"; };
@@ -133,6 +125,7 @@
 		F1D55F8B199A5C2A007F8136 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F1D55F8E199A5D0B007F8136 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		F1D55F90199A5E34007F8136 /* libcorecrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcorecrypto.dylib; path = usr/lib/system/libcorecrypto.dylib; sourceTree = SDKROOT; };
+		F1FFCE9619DA5823003068EB /* SWWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWWebImage.framework; path = "SWWebImage/SWWebImage/build/Debug-iphoneos/SWWebImage.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1FFCE9719DA5823003068EB /* SWWebImage.framework in Frameworks */,
 				F1907D9D19A970FB0079DE92 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +159,7 @@
 		F136C1BD1999B0F5001F6A26 /* chat */ = {
 			isa = PBXGroup;
 			children = (
+				F12C11D619D985D000DA829D /* micro_small@2x.png */,
 				F1560F0819A63F3500101C68 /* bubble_min.png */,
 				F1560F0919A63F3500101C68 /* bubble_min@2x.png */,
 				F136C1C01999B13D001F6A26 /* ChatViewController.swift */,
@@ -205,19 +200,6 @@
 				F1560F0019A6167600101C68 /* SwiftyJSON.swift */,
 			);
 			path = json;
-			sourceTree = "<group>";
-		};
-		F159C82B19A4771300058487 /* SWWebImage */ = {
-			isa = PBXGroup;
-			children = (
-				F159C82C19A4771300058487 /* SWWebImageDownloader.swift */,
-				F159C82D19A4771300058487 /* SWWebImageDownloaderOperation.swift */,
-				F159C82E19A4771300058487 /* SWWebImageManager.swift */,
-				F159C82F19A4771300058487 /* SWWebImageUtil.swift */,
-				F159C83019A4771300058487 /* SWWebImageView.swift */,
-				F159C83119A4771300058487 /* util.swift */,
-			);
-			path = SWWebImage;
 			sourceTree = "<group>";
 		};
 		F16B39741994B779009E9AF0 /* communication */ = {
@@ -263,7 +245,6 @@
 				F136C1BF1999B0F5001F6A26 /* me */,
 				F19AE2D01998A40100C72FD5 /* resources */,
 				F17F876119949D9900CB43CC /* Supporting Files */,
-				F159C82B19A4771300058487 /* SWWebImage */,
 				F19AE2CF19989DDB00C72FD5 /* widget */,
 				F19CBA26199A649D00EA2737 /* Campfire-Bridging-Header.h */,
 				F17F876319949D9900CB43CC /* AppDelegate.swift */,
@@ -348,6 +329,8 @@
 		F1D55F8D199A5CEB007F8136 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1FFCE9619DA5823003068EB /* SWWebImage.framework */,
+				F12C11D819D9A07D00DA829D /* CoreAudioKit.framework */,
 				F1907D9C19A970FB0079DE92 /* libsqlite3.0.dylib */,
 				F1560F0619A63C5F00101C68 /* QuartzCore.framework */,
 				F1D55F90199A5E34007F8136 /* libcorecrypto.dylib */,
@@ -446,6 +429,7 @@
 				F19AE2D71998A40100C72FD5 /* tabbar_contacts@2x.png in Resources */,
 				F19AE2D81998A40100C72FD5 /* tabbar_contactsHL@2x.png in Resources */,
 				F1560F0B19A63F3500101C68 /* bubble_min@2x.png in Resources */,
+				F12C11D719D985D000DA829D /* micro_small@2x.png in Resources */,
 				F19AE2DA1998A40100C72FD5 /* tabbar_mainframeHL@2x.png in Resources */,
 				F19AE2DB1998A40100C72FD5 /* tabbar_me@2x.png in Resources */,
 				F1B891BD19BB616700108FF6 /* add@2x.png in Resources */,
@@ -470,7 +454,6 @@
 				F1A210AF199A515800B4663F /* HttpFileUpload.swift in Sources */,
 				F19AE2CC199857CE00C72FD5 /* Session.swift in Sources */,
 				F16B39731994A7C0009E9AF0 /* util.swift in Sources */,
-				F159C83619A4771300058487 /* SWWebImageView.swift in Sources */,
 				F17F876619949D9900CB43CC /* ViewController.swift in Sources */,
 				F136C1C5199A1B9B001F6A26 /* Websocket.swift in Sources */,
 				F19AE2E01998BEC600C72FD5 /* TabView.swift in Sources */,
@@ -483,23 +466,18 @@
 				F159C84319A4A3EA00058487 /* MessagesComposerTextView.swift in Sources */,
 				F19AE2DE1998A4EA00C72FD5 /* ImageButton.swift in Sources */,
 				F134760D19B845B000670200 /* MessageTextView.swift in Sources */,
-				F159C83419A4771300058487 /* SWWebImageManager.swift in Sources */,
 				F18A7A7819B97B1500FE53EF /* SearchViewController.swift in Sources */,
 				F1505B8A19A580FA001412E6 /* MessageKeyboardController.swift in Sources */,
-				F159C83519A4771300058487 /* SWWebImageUtil.swift in Sources */,
 				F18A7545199B160B002FE6FB /* SocketIO.swift in Sources */,
-				F159C83219A4771300058487 /* SWWebImageDownloader.swift in Sources */,
 				F159C83B19A49C1000058487 /* MessageViewController.swift in Sources */,
 				F1560F0319A6250300101C68 /* MessageCell.swift in Sources */,
 				F17F876419949D9900CB43CC /* AppDelegate.swift in Sources */,
 				F1560F0119A6167600101C68 /* SwiftyJSON.swift in Sources */,
 				F134760B19B82E2000670200 /* NSDate.swift in Sources */,
 				F136C1C11999B13D001F6A26 /* ChatViewController.swift in Sources */,
-				F159C83719A4771300058487 /* util.swift in Sources */,
 				F1505B8C19A59AAF001412E6 /* Message.swift in Sources */,
 				F159C83D19A49C7400058487 /* MessgeCollectionView .swift in Sources */,
 				F153CA5819B705A10039E8F0 /* PersistenceProcessor.swift in Sources */,
-				F159C83319A4771300058487 /* SWWebImageDownloaderOperation.swift in Sources */,
 				F16B39761994B78F009E9AF0 /* HttpConnection.swift in Sources */,
 				F18693B919B6FDBB006CD935 /* SQLiteDB.swift in Sources */,
 				F136C1C31999B302001F6A26 /* ContactsViewController.swift in Sources */,
@@ -623,6 +601,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Campfire",
+					"$(PROJECT_DIR)/SWWebImage/SWWebImage/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Campfire/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -647,6 +626,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Campfire",
+					"$(PROJECT_DIR)/SWWebImage/SWWebImage/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Campfire/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

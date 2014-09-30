@@ -61,19 +61,19 @@ class SWWebImageDownloaderOperation : NSOperation, SWWebImageOperation, NSURLCon
         }
     }
     
-//    func setExecuting(setExecuting: Bool) {
-//        if executing == setExecuting {return}
-//        willChangeValueForKey("isExecuting")
-//        _isExecuting = setExecuting
-//        didChangeValueForKey("isExecuting")
-//    }
-//    
-//    func setFinished(setFinished: Bool) {
-//        if finished == setFinished {return}
-//        willChangeValueForKey("isFinished")
-//        _isFinished = setFinished
-//        didChangeValueForKey("isFinished")
-//    }
+    //    func setExecuting(setExecuting: Bool) {
+    //        if executing == setExecuting {return}
+    //        willChangeValueForKey("isExecuting")
+    //        _isExecuting = setExecuting
+    //        didChangeValueForKey("isExecuting")
+    //    }
+    //
+    //    func setFinished(setFinished: Bool) {
+    //        if finished == setFinished {return}
+    //        willChangeValueForKey("isFinished")
+    //        _isFinished = setFinished
+    //        didChangeValueForKey("isFinished")
+    //    }
     
     var expectedSize: Int
     var responseFromCached: Bool

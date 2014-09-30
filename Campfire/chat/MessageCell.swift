@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SWWebImage
 
 func horizontallyFlippedImage(image: UIImage) -> UIImage {
     return UIImage(CGImage: image.CGImage, scale: image.scale, orientation: UIImageOrientation.UpMirrored)

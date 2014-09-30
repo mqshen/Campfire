@@ -349,6 +349,9 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
             let session = Session.sharedInstance
             let now = NSDate.date()
             
+            let date = NSDate()
+            let timestamp: Int = Int(date.timeIntervalSince1970)
+
             let message = Message(fromUserName: session.userName!,
                 toUserName: self.toUser!.name,
                 type: 1,
@@ -387,6 +390,10 @@ class MessageViewController: UIViewController, UICollectionViewDelegate, UIColle
     func finishSendingOrReceivingMessage() {
         self.collectionView?.reloadData()
         self.scrollToBottomAnimated(true)
+    }
+    
+    func didSelectedVoice(change: Bool) {
+        println("tttt")
     }
     
 }

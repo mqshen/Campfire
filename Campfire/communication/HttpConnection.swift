@@ -69,6 +69,7 @@ func sendAsyncHttpRequest(url: String,
             }
             else {
                 if let responseData = data? {
+                    println(NSString(data: responseData, encoding:NSUTF8StringEncoding))
                     if responseType == ResponseType.JSON {
                         var e: NSError?
                         var responseDic = NSJSONSerialization.JSONObjectWithData( responseData,

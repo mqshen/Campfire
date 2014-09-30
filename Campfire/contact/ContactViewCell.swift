@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SWWebImage
 
 class ContactViewCell: UITableViewCell
 {

@@ -51,10 +51,8 @@ func imageOrientationFromImageData(imageData: NSData) -> UIImageOrientation {
             let prop = properties.__conversion()
             var exifOrientation = 0
             if let value: AnyObject = prop[kCGImagePropertyOrientation]? {
-                if let orientation = (value as? CFNumber)? {
-                    CFNumberGetValue(orientation, CFNumberType.IntType, &exifOrientation)
-                    result = exifOrientationToiOSOrientation(exifOrientation)
-                }
+                CFNumberGetValue(value as CFNumber, CFNumberType.IntType, &exifOrientation)
+                result = exifOrientationToiOSOrientation(exifOrientation)
             }
         }
         else {
