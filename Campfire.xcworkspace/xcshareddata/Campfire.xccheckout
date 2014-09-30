@@ -20,7 +20,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>177F260391A2EA275A2AC0B368879D40B4CC3A3E</key>
-		<string>..SWWebImage/</string>
+		<string>..SWWebImage</string>
 		<key>CC6CFAC7DC1E5D8807201AA8CC2B4031282FDC3A</key>
 		<string>..</string>
 	</dict>
@@ -46,7 +46,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>177F260391A2EA275A2AC0B368879D40B4CC3A3E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>SWWebImage</string>
+			<string>CampfireSWWebImage</string>
 		</dict>
 	</array>
 </dict>

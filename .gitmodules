@@ -1,0 +1,3 @@
+[submodule "SWWebImage"]
+	path = SWWebImage
+	url = https://github.com/mqshen/SWWebImage.git
